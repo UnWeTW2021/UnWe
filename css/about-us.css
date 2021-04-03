@@ -1,0 +1,107 @@
+.cardWrapper {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: 33% 33% 33%;
+    gap: 3%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cardWrapper__card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 6px #00000029;
+    /* border-radius: 71px; */
+    position: relative;
+}
+
+.cardWrapper__card__defaultState {
+    display: flex;
+    flex-direction: column;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.cardWrapper__card__hoverWrapper {
+    visibility: hidden;
+}
+
+.cardWrapper__card__imageWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cardWrapper__card__imageWrapper>img {
+    width: 20vw;
+}
+
+.cardWrapper__card__infoWrapper h1 {
+    text-align: center;
+    font-size: 2em;
+}
+
+.cardWrapper__card__infoWrapper h1>span {
+    font-size: 0.6em;
+}
+
+.cardWrapper__card:hover .cardWrapper__card__defaultState {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.cardWrapper__card:hover .cardWrapper__card__hoverWrapper {
+    visibility: visible;
+    opacity: 1;
+}
+
+.cardWrapper__card__hoverWrapper {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.cardWrapper__card__hoverWrapper__socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.cardWrapper__card__hoverWrapper__socials>a>img {
+    width: 3em;
+    height: 3em;
+    margin-right: 1.5em;
+}
+
+.cardWrapper__card__hoverWrapper__socials>a {
+    display: flex;
+    text-decoration: none;
+    width: min-content;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3em;
+    font-size: 1.5em;
+    color: black;
+}
+
+.cardWrapper__card__hoverWrapper__socials>a:last-of-type {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .cardWrapper {
+        grid-template-columns: 90%;
+    }
+    .cardWrapper__card__imageWrapper>img {
+        width: 60vw;
+    }
+}
