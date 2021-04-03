@@ -1,0 +1,47 @@
+.footerContainer {
+    background-color: #88A4BC;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 40px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.footerContainer a {
+    text-decoration: none;
+    color: gray;
+    font-size: 16px;
+}
+
+.footerContainer__siteuri p {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.footerContainer {
+    text-align: center;
+}
+
+.footerContainer__sigla>img {
+    width: 100%;
+}
+
+.footerContainer__sigla {
+    width: 15%;
+}
+
+.footerContainer__socials p {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+.footerContainer a:hover {
+    color: rgb(255, 255, 255);
+}
