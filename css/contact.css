@@ -1,0 +1,118 @@
+#image-contact {
+    height: 20vw;
+    width: 40vw;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#image-contact * {
+    margin: 0;
+    padding: 0;
+}
+
+.project-info {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center
+}
+
+.project-title {
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.map-contact {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.form-wrapper {
+    padding-bottom: 5em;
+}
+
+.form-wrapper,
+.map-contact {
+    margin-top: 5em;
+}
+
+.form-wrapper,
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form>label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #2B2B2B;
+    opacity: 1;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+.form input,
+textarea {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #3F3F3F33;
+    border-radius: 10px;
+    opacity: 1;
+    width: 20em;
+    height: 2em;
+}
+
+#mesaj {
+    height: 7em;
+    text-align: left;
+    justify-content: flex-start;
+    align-items: flex-start;
+    white-space: normal;
+}
+
+form button {
+    margin-top: 5%;
+    border: 1px solid #0238BF;
+    text-align: center;
+    letter-spacing: 0px;
+    color: #0238BF;
+    padding: 1em 2em;
+}
+
+button {
+    background-color: unset;
+}
+
+button:hover,
+button:focus {
+    outline: unset;
+}
+
+@media only screen and (max-width: 1000px) {
+    .form-wrapper,
+    .map-contact {
+        margin-top: 2em;
+    }
+    #image-contact {
+        height: 50vh;
+        width: 90vw;
+    }
+    .form>label {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        letter-spacing: 0px;
+        color: #2B2B2B;
+        opacity: 1;
+        font-weight: 700;
+        font-size: 3.5vw;
+    }
+}
