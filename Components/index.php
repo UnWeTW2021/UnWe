@@ -7,10 +7,12 @@
     <title>Testing document</title>
     <link rel="stylesheet" href="header-styles.css">
     <link rel="stylesheet" href="footer-styles.css">
+    <script src="header.js" defer></script>
+
 </head>
 <body style="height:2000px;">
     <?php include('header.php');?>
 
-    <?php include('footer.php');?>
+    <?php #include('footer.php');?>
 </body>
 </html>
