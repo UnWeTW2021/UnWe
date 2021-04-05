@@ -5,7 +5,7 @@
         <br>
         <a href="https://profs.info.uaic.ro/~busaco/teach/courses/web/">Curs</a>
     </div>
-    <div class="footerContainer__sigla"><img src="resources/SiglaGuvern.png" alt="SiglaGuvern"></div>
+    <div class="footerContainer__sigla"><img src="Components/resources/SiglaGuvern.png" alt="SiglaGuvern"></div>
     <div class="footerContainer__socials">
         <p>Socials</p>
         <a href="">Facebook</a>

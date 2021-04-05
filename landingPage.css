@@ -1,0 +1,14 @@
+#map {
+    max-width: 1000px;
+    margin: 3vw auto;
+}
+
+#map tspan {
+    display: none;
+}
+
+@media only screen and (max-width: 830px) {
+    #map {
+        margin: calc(50vh - 40px - 66px - 110px) auto;
+    }
+}
