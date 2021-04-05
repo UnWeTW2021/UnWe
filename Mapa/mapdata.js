@@ -47,7 +47,7 @@ var simplemaps_countrymap_mapdata = {
         initial_zoom_solo: "no",
         region_opacity: 1,
         region_hover_opacity: 0.6,
-        zoom_out_incrementally: "yes",
+        zoom_out_incrementally: "no",
         zoom_percentage: 0.99,
         zoom_time: 0.5,
 
@@ -66,7 +66,7 @@ var simplemaps_countrymap_mapdata = {
         images_directory: "default",
         fade_time: 0.1,
         link_text: "",
-        popups: "",
+        popups: "detect",
         state_image_url: "",
         state_image_position: "",
         location_image_url: ""
@@ -74,136 +74,213 @@ var simplemaps_countrymap_mapdata = {
     state_specific: {
         ROU122: {
             name: "Dolj",
-            url: "http://localhost:3000/UnWe/Mvc/Public/judet/Dolj"
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Dolj"
         },
         ROU123: {
             name: "Gorj",
-            url: "http://localhost:3000/UnWe/Mvc/Public/judet/Gorj"
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Gorj"
         },
         ROU124: {
             name: "Mehedinti",
-            url: "http://localhost:3000/UnWe/Mvc/Public/judet/Mehedinti"
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Mehedinti"
         },
         ROU126: {
             name: "Olt",
-            url: "http://localhost:3000/UnWe/Mvc/Public/judet/Olt"
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Olt"
         },
         ROU127: {
             name: "Teleorman",
-            url: "http://localhost:3000/UnWe/Mvc/Public/judet/Teleorman"
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Teleorman"
         },
         ROU128: {
             name: "Bucharest",
-            url: "http://localhost:3000/UnWe/Mvc/Public/judet/Bucuresti"
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Bucharest"
         },
         ROU129: {
-            name: "Calarasi"
+            name: "Calarasi",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Calarasi"
         },
         ROU130: {
-            name: "Dâmbovita"
+            name: "Dambovita",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Dambovita"
         },
         ROU131: {
-            name: "Giurgiu"
+            name: "Giurgiu",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Giurgiu"
         },
         ROU132: {
-            name: "Ialomita"
+            name: "Ialomita",
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Ialomita"
         },
         ROU133: {
-            name: "Constanta"
+            name: "Constanta",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Constanta"
         },
         ROU276: {
-            name: "Arad"
+            name: "Arad",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Arad"
         },
         ROU277: {
-            name: "Bihor"
+            name: "Bihor",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Bihor"
         },
         ROU278: {
-            name: "Caras-Severin"
+            name: "Caras-Severin",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Caras-Severin"
         },
         ROU280: {
-            name: "Timis"
+            name: "Timis",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Timis"
         },
         ROU287: {
-            name: "Botosani"
+            name: "Botosani",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Botosani"
         },
         ROU294: {
-            name: "Alba"
+            name: "Alba",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Alba"
         },
         ROU295: {
-            name: "Bistrita-Nasaud"
+            name: "Bistrita-Nasaud",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Bistrita-Nasaud"
         },
         ROU296: {
-            name: "Cluj"
+            name: "Cluj",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Cluj"
         },
         ROU297: {
-            name: "Hunedoara"
+            name: "Hunedoara",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Hunedoara"
         },
         ROU298: {
-            name: "Maramures"
+            name: "Maramures",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Maramures"
         },
         ROU299: {
-            name: "Mures"
+            name: "Mures",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Mures"
         },
         ROU300: {
-            name: "Salaj"
+            name: "Salaj",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Salaj"
         },
         ROU301: {
-            name: "Satu Mare"
+            name: "Satu Mare",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Satu-Mare"
         },
         ROU302: {
-            name: "Arges"
+            name: "Arges",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Arges"
         },
         ROU303: {
-            name: "Sibiu"
+            name: "Sibiu",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Sibiu"
         },
         ROU304: {
-            name: "Vâlcea"
+            name: "Valcea",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Valcea"
         },
         ROU305: {
-            name: "Brasov"
+            name: "Brasov",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Brasov"
         },
         ROU306: {
-            name: "Covasna"
+            name: "Covasna",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Covasna"
         },
         ROU307: {
-            name: "Harghita"
+            name: "Harghita",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Harghita"
         },
         ROU308: {
             name: "Iasi",
-            url: "http://localhost:3000/UnWe/Mvc/Public/judet/Iasi"
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Iasi"
         },
         ROU309: {
-            name: "Neamt"
+            name: "Neamt",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Neamt"
         },
         ROU310: {
-            name: "Prahova"
+            name: "Prahova",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Prahova"
         },
         ROU311: {
-            name: "Suceava"
+            name: "Suceava",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Suceava"
         },
         ROU312: {
-            name: "Bacau"
+            name: "Bacau",
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Bacau"
         },
         ROU313: {
-            name: "Braila"
+            name: "Braila",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Braila"
         },
         ROU314: {
-            name: "Buzau"
+            name: "Buzau",
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Buzau"
         },
         ROU315: {
-            name: "Galati"
+            name: "Galati",
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Galati"
         },
         ROU316: {
-            name: "Vaslui"
+            name: "Vaslui",
+            color: "#ed1b24",
+            url: "Mvc/Public/judet/Vaslui"
         },
         ROU317: {
-            name: "Vrancea"
+            name: "Vrancea",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Vrancea"
         },
         ROU4844: {
-            name: "Ilfov"
+            name: "Ilfov",
+            color: "#b8da9d",
+            url: "Mvc/Public/judet/Ilfov"
         },
         ROU4847: {
-            name: "Tulcea"
+            name: "Tulcea",
+            color: "#fff2d8",
+            url: "Mvc/Public/judet/Tulcea"
         }
     },
     locations: {},

@@ -16,9 +16,9 @@
     <?php
     include('Components/header.php');
     ?>
-    
+    <div class="harta">
     <div id="map" ></div>
-   
+    </div>
     <?php
     include('Components/footer.php');
     ?>
