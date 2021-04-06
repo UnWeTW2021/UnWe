@@ -5,13 +5,14 @@
     justify-content: space-evenly;
     align-items: flex-start;
     padding: 10px 0;
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: 'Poppins', sans-serif;
     text-align: center;
 }
 
 .footerContainer a {
     text-decoration: none;
-    color: #b8da9d;
+    color: #f0e2c9;
     font-size: 17px;
 }
 
@@ -27,7 +28,7 @@
 }
 
 .footerContainer__siteuri p {
-    color: black;
+    color: white;
     font-weight: bold;
     font-size: 20px;
     margin: 5px 0;
@@ -51,7 +52,7 @@
 }
 
 .footerContainer__socials p {
-    color: black;
+    color: white;
     font-weight: bold;
     font-size: 20px;
     margin: 5px 0;
