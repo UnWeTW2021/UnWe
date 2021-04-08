@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+  }
+
+
+  .card {
+    background-color: #fff;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    margin: 10px;
+  }
+
+
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+
+h1
+{
+  font-weight: 500;
+  line-height: 3;
+  background-color: #c3d6e6;
+  font-family: 'Poppins', sans-serif;
+  height: 100px;
+  text-align: center;
+  font-size: 2.5rem;
+
+}
+
+.judete{
+  background-color: #c3d6e6;
+}
+
+.judete .flex{
+    flex-wrap: wrap;
+    background-color: #c3d6e6;
+}
+
+.judete .card{
+  text-align: center;
+  margin: 18px 10px 40px;
+  transition: transform 0.2s ease-in;
+  font-family: 'Poppins', sans-serif;
+  
+
+}
+
+.judete .card .h3{
+  font-size: 20px;
+  margin-bottom: 10px;
+  background-color: #c3d6e6;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 50;
+
+}
+
+.judete .card:hover {
+    transform: translateY(-15px);
+    background-color:#f4f4f4;
+  }
