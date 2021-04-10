@@ -1,18 +1,14 @@
 <?php
 
-if ( isset( $_POST['submit'] ) ) {
-      $firstname = $_POST['name'];
-       $email = $_POST['email'];
-       $tel= $_POST['tel'];
-       $mesaj= $_POST['mesaj']; 
+if ( isset( $_GET['submit'] ) ) {
+      $firstname = $_GET['name'];
+       $email = $_GET['email'];
+       $tel= $_GET['tel'];
+       $mesaj= $_GET['mesaj']; 
     
-       echo $firstname;
-       echo $email;
-       echo $tel;
-       echo $mesaj;
 
        $to_email =$email;
-       echo $to_email;
+    
      $subject = "Contact UnWe " . $firstname ;
 $body = "Numarul de telefon asociat: " . $tel . "." . "\n" ."Mesajul este: " .$mesaj . ".";
 $headers = "From: UnWe Team ";

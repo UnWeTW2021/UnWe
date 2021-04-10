@@ -10,3 +10,11 @@ L.tileLayer('https://api.mapbox.com/styles/v1/bobo23/ckirtoy5p0b6f19ozjboyriot/t
 }).addTo(mymap);
 var marker = L.marker([47.157179425453954, 27.587091255892698]).addTo(mymap);
 marker.bindPopup("<h1>UnWe</h1>").openPopup();
+
+
+// const form = document.getElementById('contact-form');
+// form.addEventListener('submit', mysubmitHandler);
+
+// function mysubmitHandler(event) {
+//     event.preventDefault();
+// }

@@ -11,7 +11,7 @@
 }
 
 .project-info {
-    width: 95%;
+    width: 40vw;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,13 @@
     text-align: center
 }
 
+.project-info p {
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
 .project-title {
+    margin-bottom: 0;
     font-weight: 700;
     font-size: 1.5em;
 }
@@ -49,6 +55,10 @@
     align-items: center;
 }
 
+.form {
+    align-items: flex-start;
+}
+
 .form>label {
     display: flex;
     flex-direction: column;
@@ -57,16 +67,17 @@
     color: #2B2B2B;
     opacity: 1;
     font-weight: 700;
-    font-size: 2em;
+    font-size: 1.5em;
+    margin-top: 1%;
 }
 
 .form input,
 textarea {
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #3F3F3F33;
+    border: 1px solid #0238BF;
     border-radius: 10px;
     opacity: 1;
-    width: 20em;
+    width: 40vw;
     height: 2em;
 }
 
@@ -78,7 +89,8 @@ textarea {
     white-space: normal;
 }
 
-form button {
+.form button {
+    align-self: center;
     margin-top: 5%;
     border: 1px solid #0238BF;
     text-align: center;
@@ -96,7 +108,10 @@ button:focus {
     outline: unset;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
+    .project-info {
+        width: 90vw;
+    }
     .form-wrapper,
     .map-contact {
         margin-top: 2em;
@@ -106,13 +121,15 @@ button:focus {
         width: 90vw;
     }
     .form>label {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-        letter-spacing: 0px;
-        color: #2B2B2B;
-        opacity: 1;
-        font-weight: 700;
-        font-size: 3.5vw;
+        margin-top: 3%;
+        font-size: 20px;
+    }
+    .project-info p {
+        margin-bottom: 0;
+        font-size: 16px;
+    }
+    .form input,
+    textarea {
+        width: 90vw;
     }
 }

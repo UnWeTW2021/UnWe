@@ -17,9 +17,11 @@
 </head>
 
 <body>
-
+<?php
+    # include('Components/header.php');
+    ?>
     <section class="project-info">
-        <p class="project-title">UnWe (Unemployment Web Visualizer) / M </p>
+        <h1 class="project-title">UnWe (Unemployment Web Visualizer) / M </h1>
         <p>Recurgând la un API REST/GraphQL propriu, să se realizeze un instrument Web de vizualizare și de comparare multi-criteriala (pe județe, nivel de educație, grupe de vârstă, mediu, perioadă de timp etc.) a
             <a href="https://data.gov.ro/dataset?q=somaj&amp;sort=metadata_modified+desc">datelor publice referitoare la șomajul din România</a> pe ultimele N luni (minim 12).</p>
         <p>Statisticile, plus vizualizările generate – minim 3 maniere, plus cele cartografice pe baza unor servicii Web de profil – vor putea fi exportate in formatele CSV, SVG si PDF.</p>
@@ -33,7 +35,7 @@
 
     </section>
     <section class="form-wrapper">
-        <form class="form" id="contact-form" action="contact_mail.php" method="POST">
+        <form class="form" id="contact-form" action="contact_mail.php" method="GET">
             <label for="name">Numele tau
             <input type="text" name="name" required>
 
@@ -54,6 +56,9 @@
 
         </form>
     </section>
+    <?php
+   # include('Components/footer.php');
+    ?>
     <script src="js/contact.js"></script>
 </body>
 
