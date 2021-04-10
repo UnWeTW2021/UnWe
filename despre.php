@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+    <?php include('Components/header-include.php');?>
 
 
     <link rel="stylesheet" href="css/normalize.css">
@@ -20,7 +20,7 @@
 
 <body>
 <?php
-    # include('Components/header.php');
+     include('Components/header.php');
     ?>
 
     <div class="cardWrapper">
@@ -117,7 +117,7 @@
 
 
     <?php
-   # include('Components/footer.php');
+    include('Components/footer.php');
     ?>
 
 
