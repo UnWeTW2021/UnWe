@@ -5,16 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="judete-lista-style.css">
-    <link rel="stylesheet" href="header-styles.css">
-    <link rel="stylesheet" href="footer-styles.css">
     <script src="header.js" defer></script>
     <?php 
-    include('header-include.php');
+    include('Components/header-include.php');
     ?>
     <title>Lista Judetelor</title>
 </head>
 <body >
-<?php include('header.php');?>
+<?php include('Components/header.php');?>
     <section class="judete">
         <h1>
             Lista Județelor 
@@ -275,6 +273,6 @@
 
         </div>
     </section>
-    <?php include('footer.php');?>
+    <?php include('Components/footer.php');?>
 </body>
 </html>
