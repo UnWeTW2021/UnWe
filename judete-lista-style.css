@@ -28,7 +28,7 @@ h1
 {
   font-weight: 500;
   line-height: 3;
-  background-color: #c3d6e6;
+  background-color: #fff;
   font-family: 'Poppins', sans-serif;
   height: 100px;
   text-align: center;
@@ -37,12 +37,12 @@ h1
 }
 
 .judete{
-  background-color: #c3d6e6;
+  background-color: #fff;
 }
 
 .judete .flex{
     flex-wrap: wrap;
-    background-color: #c3d6e6;
+    background-color: #fff;
 }
 
 .judete .card{
@@ -57,7 +57,7 @@ h1
 .judete .card .h3{
   font-size: 20px;
   margin-bottom: 10px;
-  background-color: #c3d6e6;
+  background-color: #fff;
   font-family: 'Poppins', sans-serif;
   font-weight: 50;
 
@@ -66,4 +66,11 @@ h1
 .judete .card:hover {
     transform: translateY(-15px);
     background-color:#f4f4f4;
+  }
+
+  @media(max-width:300px){
+  h1{
+    line-height: 1.5;
+  }
+
   }
