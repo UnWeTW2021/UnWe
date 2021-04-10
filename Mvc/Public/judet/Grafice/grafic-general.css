@@ -1,0 +1,29 @@
+.setari_generale {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grafic_pie_doughnut {
+    margin: 2em 0;
+    width: 32vw;
+}
+
+.grafic_general {
+    margin: 2em 0;
+    width: 60vw;
+    /* min-height: 40vh; */
+}
+
+.container {
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .grafic_pie_doughnut {
+        width: 90vw;
+    }
+    .grafic_general {
+        width: 100vw;
+    }
+}

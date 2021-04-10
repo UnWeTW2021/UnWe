@@ -1,0 +1,110 @@
+.headerContainer {
+    position: sticky;
+    background-color: #3b729f;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.headerContainer a {
+    text-decoration: none;
+    color: white;
+}
+
+.headerContainer__links ul {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+.headerContainer__links li {
+    list-style: none;
+}
+
+.headerContainer__links li a {
+    display: block;
+    padding: 1.5rem;
+    font-size: 26px;
+    font-weight: bold;
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-family: 'Poppins', sans-serif;
+}
+
+.headerContainer__links li:hover {
+    transition: 1s;
+    background-color: #4889be;
+}
+
+.headerContainer__left {
+    height: 80px;
+}
+
+.headerContainer__left img {
+    width: 5em;
+    margin: 1px 2px;
+}
+
+.headerContainer__toggleButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40px;
+    height: 27px;
+    padding: 1.6rem;
+}
+
+.headerContainer__toggleButton:hover {
+    transition: 1s;
+    background-color: #4889be;
+}
+
+.headerContainer__toggleButton__line {
+    height: 4px;
+    width: 100%;
+    background-color: white;
+    border-radius: 15px;
+}
+
+@media (max-width: 1000px) {
+    .headerContainer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .headerContainer__links {
+        position: absolute;
+        background-color: #3b729f;
+        top: 80px;
+        display: none;
+        width: 100%;
+    }
+    .headerContainer__links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+    .headerContainer__toggleButton {
+        display: flex;
+    }
+    .headerContainer__links li {
+        text-align: center;
+    }
+    .headerContainer__links li a {
+        padding: 0.5rem 1rem;
+    }
+    .headerContainer__links.active {
+        display: block;
+    }
+}

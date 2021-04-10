@@ -1,0 +1,27 @@
+#map {
+    max-width: 1000px;
+    margin: 3vw auto;
+}
+
+#map tspan {
+    display: none;
+}
+
+.harta {
+    width: 40vw;
+    margin: 3em auto;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #c3d6e6;
+}
+
+@media only screen and (max-width:1100px) {
+    .harta {
+        width: 90vw;
+    }
+}
