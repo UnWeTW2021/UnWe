@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarly HTML</title>
+    <link rel="stylesheet" href="css/scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
+  </head>
+  <body prefix="schema: http://schema.org">
+    <header>
+      <div class="banner">
+        <img src="scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
+        <div class="status">Scholarly HTML</div>
+      </div>
+      <h1>Scholarly HTML</h1>
+    </header>
+    
+    <div role="contentinfo">
+      <dl>
+        <dt>Autori</dt>
+        <dd>
+          Borcilă Andrei-Ionuț &amp Dănilă Ana-Maria &amp Harip Alexandru-Gabriel
+        </dd>
+        <dt>Opensource template</dt>
+        <dd>
+          <a href="https://github.com/w3c/scholarly-html">https://github.com/w3c/scholarly-html</a>
+        </dd>
+        <dt>Discussion Group</dt>
+        <dd>
+          The <a href="https://www.w3.org/community/scholarlyhtml/">Scholarly HTML Community
+          Group</a> at <a href="https://w3.org/">W3C</a>
+          (<a href="https://lists.w3.org/Archives/Public/public-scholarlyhtml/">email archives</a>)
+        </dd>
+        <dt>License</dt>
+        <dd>
+          <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>
+        </dd>
+      </dl>
+    </div>
+    <section typeof="sa:Abstract" id="cerinta-problemei" role="doc-abstract">
+      <h2>Cerința problemei</h2>
+      <p>
+        Recurgând la un API REST/GraphQL propriu, să se realizeze un instrument Web de vizualizare și de comparare multi-criteriala 
+        (pe județe, nivel de educație, grupe de vârstă, mediu, perioadă de timp etc.) a datelor publice referitoare la șomajul din România 
+        pe ultimele N luni (minim 12).
+        Statisticile, plus vizualizările generate – minim 3 maniere, plus cele cartografice 
+        pe baza unor servicii Web de profil – vor putea fi exportate in formatele CSV, SVG si PDF.
+      </p>
+      <section id="scop-proiect" role="scop">
+          <h2>Scopul proiectului</h2>
+        <p>
+          Prin acest proiect am început să lucram la o aplicație Web destinată persoanelor
+          interesate de statisticile șomajului din România. Ne-am propus să realizăm acest instrument de vizualizare
+          de date cât mai intuitiv și user-friendly pentru a putea fi folosit atât de persoane care utilizează zilnic tehnologia, cât
+          și pentru persoanele care nu folosec. Statisticile sunt reprezentate sub formă de grafic, pentru a oferi o vizualizare
+          cât mai simplă a datelor dintr-un anumit județ, într-o anumită lună sau pe o perioadă mai îndelungată.  
+
+
+        </p>
+      </section>
+
+      <section id="functionalitati-principale" role="functionalitati">
+          <h2>Funcționalități principale</h2>
+          <ul>
+              <li>Generare diagrame pe bază de criterii diferite (pe județe, nivel de educație, grupe de vârstă, mediu, perioadă de timp etc.)</li>
+              <li>Gernerare diagrame pe perioade de timp diferite</li>
+              <li>Comparare date pe baza de criterii diferite (pe județe, nivel de educație, grupe de vârstă, mediu, perioadă de timp etc.)</li>
+              <li>Generare grafic comparare</li>
+              <li>Reprezentare cartografică</li>
+              <li>Exportare date</li>
+          </ul>
+      </section>
+
+      <section id="conventii">
+          <h2>Convențiile documentului</h2>
+              <p>
+                Convenția de bază a realizării acestui document constă în utilizarea template-ului 
+                Scholarly HTML, urmând ca puncte ce trebuie abordate (Software Requirements Specification) lista disponibilă
+                pe acest <a href="https://github.com/rick4470/IEEE-SRS-Tempate?fbclid=IwAR3DgZOEpScyMDtnVBVfo7v6JuzWbCvIgwSqwSkSDSoeVX7pyryxuYRBigY#revision-history">link</a>.
+              </p>
+      </section>
+
+
+      <section id="public-destinat">
+         <h2>Public destinat</h2>
+              <p>
+              Acest document este adresat în special domnilor profesori ce se ocupă cu evaluarea proiectului 
+              de la materia Tehnologii Web.
+              Documentul poate fi util și unor posibili utilizatori, pentru a le ușura înțelegerea asupra 
+              instrumentului Web în cauză. 
+              
+              </p>
+      </section>
+
+
+      <section id="domeniu">
+        <h2>Domeniul de aplicare al produsului</h2>
+          <p>
+          Instrumentul Web UnWe de vizualizare și de comparare multi-criteriala a datelor 
+          publice referitoare la șomajul din România are drept scop principal prezentarea statisticilor 
+          de pe site-ul DATA.GOV.RO într-o manieră cât mai ușoară de înțeles, pe bază de grafice.
+          Această site ar putea fi util atât unor persoane fizice, ce doresc să se informeze în legătură cu 
+          situația șomajului în România, cât și unor persoane juridice, reprezentanți ai unor companii interesate 
+          de asemenea, de cum variază rata șomajului în funcție de diverse criterii.
+
+          </p>
+
+      </section>
+
+    </section>
+
+   
+    <section id="structura">
+      <h2>Structură</h2>
+      <p>
+        Proiectul a fost împărțit astfel încât fiecare să poată lucra la paginile alocate individual, 
+        urmând ca toate să fie unite la final. Am început cu o schiță a design-ului ce poate fi văzută la următorul 
+        <a href="https://xd.adobe.com/view/a24f4371-0a4c-4e53-9f60-aa12eb3b61dd-f71c/">link</a>. (mai multe info in raportul care urmeaza
+        a fi facut ).
+
+        Un punct important pentru noi este accesibilitatea față de posibilii utilizatori. 
+        Ne-am gândit să concepem o interfață intuitivă, pentru a putea fi ușor de folosit. 
+        Aceasta decizie am luat-o în urma consultării datelor de pe site-ul <a href="https://data.gov.ro/dataset?q=somaj&sort=metadata_modified+desc">DATA.GOV.RO</a> observând că 
+        șomerii au vârstele cuprinse în intervalul sub 25 ani - peste 55 ani.
+        Un aspect la care ne-am gândit când am vazut acest interval a fost acela că nu toți utilizează 
+        un laptop frecvent și când au nevoie de informații să le fie ușor să le vizualizeze.
+        Datele furnizate de pe site-ul mai sus menționat le-am transformat în grafice după anumite categorii:
+        pe județe, nivel de educație, grupe de vârsta, mediu, sex, etc.
+
+      </p>
+      <section id="footer-header"> 
+        <h3>Elemente comune</h3>
+        <p>
+          Fiecare pagină conține header și footer.
+        
+          
+          Header-ul conține sigla Guvernului Romaniei. Când este apasată utilizatorul este
+          trimis pe pagina principală (cea unde se află harta).
+          În partea dreapta se găsesc trei butoane
+          <ul>
+            <li>
+              Orașe care trimite către pagina cu lista tuturor orașelor/județelor
+            </li>
+            <li>
+              Contact care trimite către pagina unde se află o scurtă descriere a proiectului,
+              o hartă care arată poziționarea echipei UnWe și formularul de e-mail.
+            </li>
+            <li>
+              Despre noi care trimite la pagina cu datele despre echipă.
+            </li>
+          </ul> 
+          Acesta este un sticky header care permite utilizatorului schimbarea 
+          paginii fără a fi nevoie să dea scroll.
+          </p>
+          <img src="img/header.jpg" alt="header" width="800" height="50"> 
+          
+          <p>
+          În partea de jos a paginilor se găsește footer-ul care conține o listă de site-uri utile, sigla Guvernului și 
+          încă o listă cu link-uri către social media.
+        </p>
+        <img src="img/footer.jpg" alt="footer" width="800" height="100"> 
+      </section>
+
+      <section id="pagina-principala">
+       
+        <h3>Pagina principală </h3>
+        
+          <ul>
+            <li>
+              Elementul principal ce poate fi văzut pe prima pagina este harta României (<a href="https://simplemaps.com/resources/svg-ro">sursa</a>). 
+            </li>
+            <li>
+              Județele cu o rată a șomajului mare sunt colorate cu roșu, cele cu o rată mică sunt colorate cu verde, 
+              iar celelalte intră în categoria de șomaj mediu.
+            </li>
+            <li>
+              Când se dă click pe un județ, utilizatorul este redirecționat către pagina unde sunt graficele județului respectiv.
+            </li>
+          </ul>
+
+        <img src="img/pagPrincipala1.jpg" alt="pagPrin1" width="800" height="400">
+        <img src="img/pagPrincipala2.jpg" alt="pagPrin2" width="800" height="400">
+      </section>
+
+      <section id="Orase">
+        
+        <h3>Orașe</h3>
+        <ul>
+          <li>
+            Pagina cuprinde o listă a tuturor județelor din România, aranjate în ordine alfabetică. 
+          </li>
+          <li>
+            Un posibil utilizator care accesează această pagină poate alege statisticile cărui județ dorește să le 
+            vizualizeze.
+          </li>
+          <li>
+            Când apasă pe un județ acesta este redirecționat către pagina cu grafice. 
+          </li>
+          <li>
+            Pentru fiecare județ este făcut un card peste care este aplicată o tranziție.
+          </li>
+        </ul>
+        <img src="img/orase.jpg" alt="orase" width="800" height="400">
+        <img src="img/orase2.jpg" alt="orase2" width="800" height="400">
+
+      </section>
+      <section id="grafice">
+       
+        <h3>Grafice</h3>
+        <ul>
+          <li>
+            Aici sunt reprezentate graficele județului selectat, pe baza diferitelor criterii (pe județe, 
+            nivel de educație, grupe de vârstă, mediu, sex, etc).
+          </li>
+          <li>
+            Graficele pot fi vizualizate toate dând scroll. 
+          </li>
+          <li>
+            Graficele sunt facute utilizând libraria <a href="https://www.chartjs.org/">Chart.js</a>.
+          </li>
+          <li>
+            Statisticile și graficele se vor exporta în următoarele formate: CSV, SVG si PDF.
+          </li>
+        </ul>
+        <img src="img/graf1.png" alt="garfic1" width="800" height="400">
+        <img src="img/graf2.png" alt="garfic2" width="800" height="400">
+        <img src="img/graf3.png" alt="garfic3" width="800" height="400">
+        <img src="img/graf4.png" alt="garfic4" width="800" height="400">
+        <img src="img/graf5.png" alt="garfic5" width="800" height="400">
+        <img src="img/graf6.png" alt="garfic6" width="800" height="400">
+       
+      </section>
+      <section id="contact"> 
+        <h3>Contact</h3>
+        <p>
+          Pe această pagină sunt reprezentate: 
+        </p>
+          <ul>
+            <li>
+              o scurtă descriere a proiectului
+            </li>
+            <li>
+              o hartă, pentru a fi cunoscută locația/sediul
+            </li>
+            <li>
+              un 
+              formular prin care un posibil utilizator poate trimite mail, în cazul în care nevoie de 
+              ceva, întrebari, sugestii, etc. (Formularul este funcțional daca Xampp este configurat optim)
+            </li>
+          </ul>
+        <img src="img/contact1.jpg" alt="cont1" width="800" height="400">
+        <img src="img/contact2.jpg" alt="cont2" width="800" height="400">
+        <img src="img/contact3.jpg" alt="cont3" width="800" height="400">
+        
+      </section>
+      <section id="despre-noi">
+      
+        <h3>Despre noi</h3>
+        <p>
+          Fiecare dintre cei trei membri ai echipe are:
+        </p>
+        <ul>
+          <li>
+            un card cu poza sa
+          </li>
+          <li>
+            link-urile către rețelele social media
+          </li>
+          <li>
+            o scurtă descriere
+          </li>
+        </ul>
+        <img src="img/despreNoi.jpg" alt="desprenoi" width="800" height="400">
+        <img src="img/despreNoi2.jpg" alt="desprenoi2" width="800" height="400">
+
+        
+      </section>
+    </section>
+
+    <section id="schemaMVC">
+     
+      <h2>Schema MVC</h2>
+
+      <figure typeof="schema:SoftwareSourceCode" resource="#role-example" id="mvc_scheme">
+        <pre>
+          <a><i>MVC</i></a>
+          ├─<a><b>App</b></a>
+          │ ├─<a>Controllers</a>
+          │ │ └─<a>judet.php</a>
+          │ ├─<a> Core</a>
+          │ │ ├─<a>App.php</a>
+          │ │ └─<a>Controller.php</a>
+          │ ├─<a>Models</a>
+          │ ├─<a>Views</a>
+          │ │ ├─<a>Components</a>
+          │ │ │ ├─<a>resources</a>
+          │ │ │ ├─<a>footer-styles.css</a>
+          │ │ │ ├─<a>footer.php</a>
+          │ │ │ ├─<a>header-include.php</a>
+          │ │ │ ├─<a>header-styles.css</a>
+          │ │ │ ├─<a>header.js</a>
+          │ │ │ ├─<a>header.php</a>
+          │ │ │ └─<a>index.php</a>
+          │ │ ├─<a>Grafice</a>
+          │ │ │ ├─<a>grafic-general.css</a>
+          │ │ │ ├─<a>grafic-someri-educatie.php</a>
+          │ │ │ ├─<a>grafic-someri-indemnizatii.php</a>
+          │ │ │ ├─<a>grafic-someri-mediu-rural.php</a>
+          │ │ │ ├─<a>grafic-someri-mediu-urban.php</a>
+          │ │ │ ├─<a>grafic-someri-sex.php</a>
+          │ │ │ └─<a>grafic-someri-varsta.php</a>
+          │ │ ├─<a>grafice.php</a>
+          │ └─<a>init.php</a>
+          └─<a><b>Public</b></a>
+            ├─<a>judet</a>
+            ├─<a>Components</a>
+            │ ├─<a>resources</a>
+            │ ├─<a>footer-styles.css</a>
+            │ ├─<a>header-include.php</a>
+            │ ├─<a>header-styles.css</a>
+            │ └─<a>header.js</a>
+            └─<a>Grafice</a>
+              └─<a>grafic-general.css</a>
+            
+
+        </pre>
+      </figure>
+
+      <p>Motivație alegere MVC:</p>
+      <ul>
+        <li>
+          Bună organizare logică a proiectului și modularizare.
+        </li>
+        <li>
+          Posibilitatea lucrării indivudual localhost.
+        </li>
+        <li>
+          Posibilitatea separării informațiilor din back-end față de cele front. 
+        </li>
+        <li>
+          Izolarea codului astfel încât acesta să nu poată fi accesat din exterior.
+        </li>
+        <li>
+          Evitarea codului duplicat.
+        </li>
+      </ul>
+      
+     </section>
+
+    <section id="caracteristici-sistem">
+      
+      <h2>Caracteristicile Sistemului</h2>
+         <ul>
+           <li>
+             Pentru a putea fi generate graficele si statisticile, datele de pe site-ul DATA.GOV.RO în formatul CSV trebuie preluate 
+             și puse într-o bază de date. Se realizează conexiunea  bazei de date la nivel de backend în PHP
+           </li>
+           <li>
+            Se creeaza un API REST propriu cu funcțiile aferente.
+           </li>
+           <li>
+             Un utlizator alege județul ale cărui grafice dorește să le vadă, se fac calluri către funcțiile API-ului și se generează graficele.
+
+           </li>
+           <li>
+             O funcționalitate asigură compararea a două județe pe baza unui criteriu ales de utilizator și generarea unui grafic dublu 
+             pentru a se vedea diferențele.
+           </li>
+           <li>
+             Un utilizator are posibilitatea de a descărca graficele și statisticile în formatele CSV, SVG si PDF. 
+           </li>
+           <li>
+             Când un utilizator selectează un criteriu pe baza căruia să se genereze graficele va fi folosit Ajax
+             pentru ca site-ul să funcționeze cât mai rapid , astfel, nu se va reîncărca pagina din nou.
+           </li>
+         </ul>
+
+    </section>
+
+    <section id="tehnologii">
+      
+      <h2>Tehnologii utilizate</h2>
+     <ul>
+       <li>
+        XAMPP for Windows 8.0.3. – pachet de programe free software, open-source și cross-platform web server care conține un 
+        server HTTP (respectiv Apache), o bază de date MySQL și un interpretor pentru scripturile scrise în PHP.
+       </li>
+       <li>
+        AJAX – folosit pentru crearea părții interactive a aplicației prin utilizarea de HTML, CSS, XML. 
+       </li>
+       <li>
+         Biblioteca Chart.js - bibliotecă open-source pentru desenarea de grafice interactive și animate.
+       </li>
+       <li>
+         Biblioteca Leaflet - bibliotecă JavaScript open-source pentru hărți interactive 
+       </li>
+       <li>
+         Datele pot fi descărcate în formatele CSV, SVG si PDF.
+       </li>
+       <li>
+        Protocolul de comunicare pentru serverul de rețea folosit este protocolul HTTP.
+       </li>
+       <li>
+          În ceea ce privește arhitectura aplicației, aceasta va fi proiectată pe baza MVC, iar informațiile utilizatorilor 
+        vor fi ferite de atacuri prin folosirea tehnicii de prevenire SQLInjection.
+       </li>
+     </ul>
+    </section>
+
+    <section id="imbunatatiri">
+ 
+      <h2>Îmbunătățiri posibile</h2>
+     <ul>
+       <li>
+        Îmbunătățirea părții de front-end prin crearea de aspecte interactive.
+       </li>
+       <li>
+         Crearea posibilității de a selecta tipul de grafic dorit.
+      </li>
+       <li>
+        Crearea versiunii mobile a aplicației.
+       </li>
+       
+     </ul>
+    </section>
+
+    <section id="resurse">
+
+      <h2>Resurse</h2>
+      <ul>
+        
+        <li>
+          <a href="https://data.gov.ro/dataset?q=somaj&sort=metadata_modified+desc">DATA.GOV.RO</a>
+        </li>
+        <li>
+          <a href="https://simplemaps.com/resources/svg-ro">Mapa</a>
+        </li>
+        <li>
+          <a href="https://www.chartjs.org/">Chart.js</a>
+        </li>
+        <li>
+          <a href="https://leafletjs.com/">Leaflet</a>
+        </li>
+        <li>
+          <a href="https://www.apachefriends.org/ro/index.html">Xampp</a>
+        </li>
+        <li>
+         <a href="https://www.w3schools.com/xml/ajax_intro.asp">Ajax</a>
+        </li>
+        <li>
+          <a href="https://w3c.github.io/scholarly-html/">Scholarly HTML</a>
+        </li>
+        <li>
+          <a href="https://github.com/rick4470/IEEE-SRS-Tempate?fbclid=IwAR3DgZOEpScyMDtnVBVfo7v6JuzWbCvIgwSqwSkSDSoeVX7pyryxuYRBigY#revision-history">
+            Software Requirements Specification
+          </a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/">Developer Mozilla</a>
+        </li>
+      </ul>
+    </section>
+
+  </body>
+</html>
