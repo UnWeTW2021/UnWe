@@ -4,6 +4,7 @@
 /*}*/
 .filter-wrapper{
     flex: 1;
+
 }
 .filter-form{
     margin-top: 2vw;
@@ -11,6 +12,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .settings{
@@ -50,4 +52,8 @@ body {
     height: 1.2vw;
     color: #ff463c;
 text-align: center;
+}
+.container-wrapper{
+    margin: 1vw auto;
+    width: 30vw;
 }

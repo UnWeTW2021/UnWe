@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/compare.css">
     <?php include('Components/header-include.php');?>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
 
 </head>
@@ -68,6 +68,9 @@ include('Components/header.php');
                 <option value="Valcea">Valcea</option>
                 <option value="Vrancea">Vrancea</option>
             </select>
+            <div class="time-wrapper">
+
+
             <div class="time-select">
                 <select name="month1" class="month" id="month1">
                     <option value="">Month</option>
@@ -87,10 +90,35 @@ include('Components/header.php');
                 <select name="year1" class="year" id="year1">
                     <option value="">Year</option>
                     <option value="2019">2019</option>
-                    <option value="2020">2019</option>
-                    <option value="2021">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
 
                 </select>
+            </div>
+            <div class="time-select">
+                <select name="month2" class="month" id="month2">
+                    <option value="">Month</option>
+                    <option value="01">Jan</option>
+                    <option value="02">Feb</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Apr</option>
+                    <option value="05">May</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Aug</option>
+                    <option value="09">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
+                </select>
+                <select name="year2" class="year" id="year2">
+                    <option value="">Year</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+
+                </select>
+            </div>
             </div>
         </div>
         <div class="settings">
@@ -106,7 +134,7 @@ include('Components/header.php');
            <option value="line">Line Chart</option>
            <option value="bar">Bar Chart</option>
            <option value="radar">Radar Chart</option>
-           <option value="donut">Donut Chart</option>
+           <option value="doughnut">Donut Chart</option>
        </select>
 
 
@@ -157,30 +185,57 @@ include('Components/header.php');
                 <option value="Valcea">Valcea</option>
                 <option value="Vrancea">Vrancea</option>
             </select>
-            <div class="time-select">
-                <select name="month2" class="month" id="month2">
-                    <option value="">Month</option>
-                    <option value="01">Jan</option>
-                    <option value="02">Feb</option>
-                    <option value="03">Mar</option>
-                    <option value="04">Apr</option>
-                    <option value="05">May</option>
-                    <option value="06">Jun</option>
-                    <option value="07">Jul</option>
-                    <option value="08">Aug</option>
-                    <option value="09">Sep</option>
-                    <option value="10">Oct</option>
-                    <option value="11">Nov</option>
-                    <option value="12">Dec</option>
-                </select>
-                <select name="year2" class="year" id="year2">
-                    <option value="">Year</option>
-                    <option value="2019">2019</option>
-                    <option value="2020">2019</option>
-                    <option value="2021">2019</option>
+            <div class="time-wrapper">
+                <div class="time-select">
+                    <select name="month2" class="month" id="month3">
+                        <option value="">Month</option>
+                        <option value="01">Jan</option>
+                        <option value="02">Feb</option>
+                        <option value="03">Mar</option>
+                        <option value="04">Apr</option>
+                        <option value="05">May</option>
+                        <option value="06">Jun</option>
+                        <option value="07">Jul</option>
+                        <option value="08">Aug</option>
+                        <option value="09">Sep</option>
+                        <option value="10">Oct</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dec</option>
+                    </select>
+                    <select name="year2" class="year" id="year3">
+                        <option value="">Year</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
 
-                </select>
+                    </select>
+                </div>
+                <div class="time-select">
+                    <select name="month2" class="month" id="month4">
+                        <option value="">Month</option>
+                        <option value="01">Jan</option>
+                        <option value="02">Feb</option>
+                        <option value="03">Mar</option>
+                        <option value="04">Apr</option>
+                        <option value="05">May</option>
+                        <option value="06">Jun</option>
+                        <option value="07">Jul</option>
+                        <option value="08">Aug</option>
+                        <option value="09">Sep</option>
+                        <option value="10">Oct</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dec</option>
+                    </select>
+                    <select name="year2" class="year" id="year4">
+                        <option value="">Year</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+
+                    </select>
+                </div>
             </div>
+
         </div>
     </form>
     <p class="error-message"></p>
@@ -188,7 +243,14 @@ include('Components/header.php');
 </section>
 
 
-
+<section class="container-wrapper">
+    <div class="container">
+        <canvas id="chart1"></canvas>
+        <canvas id="chart2"></canvas>
+        <canvas id="char3"></canvas>
+        <canvas id="chart4"></canvas>
+    </div>
+</section>
 
 
 <?php
