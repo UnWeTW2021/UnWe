@@ -1,0 +1,53 @@
+/*.filter-wrapper {*/
+/*    display: flex;*/
+
+/*}*/
+.filter-wrapper{
+    flex: 1;
+}
+.filter-form{
+    margin-top: 2vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.settings{
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-form select{
+    margin-top: 0.5vw;
+    width: auto;
+    border-radius: 10px;
+    border:1px solid #c3d6e6;
+    padding: 0.5vw 1vw;
+    text-align-last: center;
+    text-align: center;
+    -ms-text-align-last: center;
+    -moz-text-align-last: center;
+}
+#city1,#city2{
+    width: 100%;
+}
+/*footer{*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*}*/
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.error-message{
+    font-size: 1.2vw;
+    height: 1.2vw;
+    color: #ff463c;
+text-align: center;
+}
