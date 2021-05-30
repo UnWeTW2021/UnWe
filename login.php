@@ -33,18 +33,18 @@
 <div class="login-wrapper">
 
 
-        <form action="api/login/loginFeature.php" method="POST" class="login-form">
+        <form  method="POST" class="login-form" id="login-form" autocomplete="off">
             <div class="login-input-wrapper">
                 <label> Email: </label>
-                <input type="text" id="email"  name="email" placeholder="your provided email..." required>
+                <input type="text" id="email"  name="email" placeholder="your provided email..." >
                 <label> Password  </label>
-                <input type="text" id="password"  name="password" placeholder="your provided password..." required>
+                <input type="password" id="password"  name="password" placeholder="your provided password..." >
             </div>
 <div class="login-input-button">
-    <button type="button" class="login-button" onclick="submitForm()">Log in</button>
+    <button type="submit" class="login-button" id="login-button">Log in</button>
 </div>
 
-
+<p id="error-message"></p>
         </form>
 
 </div>
@@ -56,7 +56,7 @@
 
 
 
-<script src="js/login.js"></script>
+<script type="module" src="js/login.js"></script>
 </body>
 
 </html>
