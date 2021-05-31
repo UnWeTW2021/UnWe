@@ -169,10 +169,10 @@ console.warn(dataValue)
   [...iframes].forEach(item=>{
       item.remove(item.selectedIndex);
   })
-  
 
 
-    let chart1 = new Chart(chart1, {
+
+    let chart100 = new Chart(chart1, {
         type:viewValue,
         data:{
             labels:[ 'Șomeri Femei-Urban ', 'Șomeri Bărbați-Urban'],

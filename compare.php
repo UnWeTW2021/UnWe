@@ -247,7 +247,7 @@ include('Components/header.php');
     <div class="container">
         <canvas id="chart1"></canvas>
         <canvas id="chart2"></canvas>
-        <canvas id="char3"></canvas>
+        <canvas id="chart3"></canvas>
         <canvas id="chart4"></canvas>
     </div>
 </section>
