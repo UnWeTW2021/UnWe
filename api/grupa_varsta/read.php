@@ -35,6 +35,7 @@ if($num > 0){
             "_30_39_ani" => $row['30_39_ani'],
             "_40_49_ani" => $row['40_49_ani'],
             "_50_55_ani" => $row['50_55_ani'],
+            "peste_55_ani" => $GrupaVarsta->Peste_55_ani,
             "luna" => $row['luna'],
             "an" => $row['an']
         );
