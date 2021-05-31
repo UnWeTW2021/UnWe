@@ -17,5 +17,15 @@ async function postData(url = '', data = {}) {
     });
     return response.json(); // parses JSON response into native JavaScript objects
 }
+async function getapi(url) {
 
-export { postData };
+
+    const response = await fetch(url);
+
+
+    var data = await response.json();
+
+    return data;
+
+}
+export { postData ,getapi};
