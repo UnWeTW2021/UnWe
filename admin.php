@@ -130,6 +130,10 @@ include('Components/header.php');
 <!--                </tbody>-->
 <!--            </table>-->
         </section>
+        <div class="pagination">
+            <button class="pagination-button" id="prev">Previous</button>
+            <button class="pagination-button" id="next">Next</button>
+        </div>
     </section>
 
 </section>
