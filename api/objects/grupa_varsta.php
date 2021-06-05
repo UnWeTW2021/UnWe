@@ -34,6 +34,18 @@ class GrupaVarsta{
 
         return $stmt;
     }
+    function readOrderJudet(){
+        //Interogarea
+        $query = "SELECT 
+                        *
+                FROM
+                " . $this->table_name . " order by judet";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+    }
 
     function create(){
         $query = "INSERT INTO " . $this->table_name . " ";

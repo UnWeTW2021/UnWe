@@ -18,11 +18,41 @@ const medieRezidenta=["JUDET","NUMAR_TOTAL_SOMERI","NUMAR_TOTAL_SOMERI_FEMEI","N
 const nivelEducatie=["JUDET","Total_someri_din_care","fara_studii","invatamant_primar","invatamant_gimnazial","invatamant_liceal","invatamant_postliceal","invatamant_profesionalarte_si_meserii","invatamant_universitar","luna","an"]
 const rateSomaj=["JUDET","Numar_total_someri","Numar_total_someri_femei","Numar_total_someri_barbati","Numar_someri_indemnizati","Numar_someri_neindemnizati","Rata_somajului_","Rata_somajului_Feminina_","Rata_somajului_Masculina_","luna","an"]
 
+var page=1;
+var number=25;
+var params = {page:page, number:number}
+var results ;
+const prevBtn=document.getElementById("prev");
+const nextBtn=document.getElementById("next");
+let pagination=document.getElementsByClassName("pagination")[0];
+
+
 form.classList.add("hidden");
 grupaVarstaAdmin.classList.add("hidden");
 medieRezidentaAdmin.classList.add("hidden");
 nivelulEducatieiAdmin.classList.add("hidden");
 rateSomajAdmin.classList.add("hidden");
+pagination.classList.add("hidden")
+
+prevBtn.addEventListener('click',event=>{
+
+    if(page!==1)
+    {
+    page=page-1;
+     params = {page:page, number:number}
+    renderPage()
+    }
+})
+nextBtn.addEventListener('click',event=>{
+console.log(page,"actuialpage")
+   if(results/number>page-1) {
+       console.log(results,"oldres")
+       page = page + 1;
+       params = {page: page, number: number}
+       renderPage()
+   }
+})
+
 
 adminSelect.addEventListener('change', event => {
     renderPage(event);
@@ -30,12 +60,15 @@ adminSelect.addEventListener('change', event => {
 
 
 async function renderPage(e) {
+
+
     errorMessage.innerText="";
     form.classList.add("hidden");
     grupaVarstaAdmin.classList.add("hidden");
     medieRezidentaAdmin.classList.add("hidden");
     nivelulEducatieiAdmin.classList.add("hidden");
     rateSomajAdmin.classList.add("hidden");
+    pagination.classList.add("hidden")
 let tables=document.querySelectorAll("table");
     [...tables].forEach(item=>{
         item.remove(item.selectedIndex);
@@ -45,13 +78,19 @@ let tables=document.querySelectorAll("table");
     let thead=document.createElement("thead");
     let tr=document.createElement("tr");
     let tbody=document.createElement("tbody");
+
+
+
+
     if(adminSelectValue===1){
-  form.classList.remove("hidden")
+
 
   grupaVarstaAdmin.classList.remove("hidden")
 
-
-      apiUrl="http://localhost/UnWe/api/grupa_varsta/read.php"
+        pagination.classList.remove("hidden")
+      apiUrl=new URL("http://localhost/UnWe/api/grupa_varsta/read_paginate.php");
+        Object.keys(params).forEach(key => apiUrl.searchParams.append(key, params[key]))
+        console.log(apiUrl)
      for (let i=0;i<medieVarsta.length;i++)
      {
          let th=document.createElement("tr");
@@ -61,14 +100,16 @@ let tables=document.querySelectorAll("table");
      thead.appendChild(tr);
      newTable.appendChild(thead);
         data1 = await getapi(apiUrl);
+        console.log(data1)
         if(data1!=="")
         {
-
+  results=data1.results;
+  console.log(results,"resits")
 
 
             console.warn("aici2")
             console.log(data1)
-            console.warn(data1.grupa_varsta.length)
+            console.warn(data1.grupa_varsta.length,"length")
             // table.innerHTML = "";
 
 
@@ -82,17 +123,24 @@ let tables=document.querySelectorAll("table");
                     data1.grupa_varsta[i]._25_29_ani + ' </th> <th scope="col">' +
                     data1.grupa_varsta[i]._30_39_ani + ' </th> <th scope="col">' +
                     data1.grupa_varsta[i]._40_49_ani + ' </th> <th scope="col">' +
-                    data1.grupa_varsta[i]._50_55_ani + '</th>';
+                    data1.grupa_varsta[i]._50_55_ani + ' </th> <th scope="col">' +
+                    data1.grupa_varsta[i].peste_55_ani + ' </th> <th scope="col">' +
+                    data1.grupa_varsta[i].luna + ' </th> <th scope="col">' +
+                    data1.grupa_varsta[i].an + '</th>';
+
                 tbody.appendChild(row);
             }
             newTable.appendChild(tbody);
             tableResponsive.appendChild(newTable)
+            form.classList.remove("hidden")
         }
     }
     else if(adminSelectValue===2){
+        pagination.classList.remove("hidden")
         form.classList.remove("hidden")
         medieRezidentaAdmin.classList.remove("hidden")
-        apiUrl="http://localhost/UnWe/api/medie_rezidenta/read.php"
+        apiUrl=new URL("http://localhost/UnWe/api/medie_rezidenta/read_paginate.php")
+        Object.keys(params).forEach(key => apiUrl.searchParams.append(key, params[key]))
         for (let i=0;i<medieRezidenta.length;i++)
         {
             let th=document.createElement("tr");
@@ -139,9 +187,11 @@ let tables=document.querySelectorAll("table");
 
     }
     else if(adminSelectValue===3){
+        pagination.classList.remove("hidden")
         form.classList.remove("hidden")
         nivelulEducatieiAdmin.classList.remove("hidden")
-        apiUrl="http://localhost/UnWe/api/nivelul_educatiei/read.php"
+        apiUrl=new URL("http://localhost/UnWe/api/nivelul_educatiei/read_paginate.php");
+        Object.keys(params).forEach(key => apiUrl.searchParams.append(key, params[key]))
         for (let i=0;i<nivelEducatie.length;i++)
         {
             let th=document.createElement("tr");
@@ -186,9 +236,11 @@ let tables=document.querySelectorAll("table");
 
 
     }    else if(adminSelectValue===4){
+        pagination.classList.remove("hidden")
         form.classList.remove("hidden")
         rateSomajAdmin.classList.remove("hidden")
-        apiUrl="http://localhost/UnWe/api/rate_somaj/read.php"
+        apiUrl=new URL("http://localhost/UnWe/api/rate_somaj/read_paginate.php");
+        Object.keys(params).forEach(key => apiUrl.searchParams.append(key, params[key]))
         for (let i=0;i<rateSomaj.length;i++)
         {
             let th=document.createElement("tr");
@@ -237,7 +289,15 @@ let tables=document.querySelectorAll("table");
   errorMessage.innerText="Selecteaza macar un dataset";
     }
 
-
+    if(page===1){
+        prevBtn.classList.add("hidden")
+    }
+    else{prevBtn.classList.remove("hidden")}
+    if(results/number<page) {nextBtn.classList.add("hidden")
+    }
+    else {
+        nextBtn.classList.remove("hidden")
+    }
 
 }
 
@@ -258,17 +318,5 @@ form.addEventListener('submit', (event) => {
     }
 
 
-    postData('http://localhost/UnWe/api/login/login.php', sendData)
-        .then(data => {
-            console.log(data);
-            if(data.success===0) {
-
-                errorMessage.innerText=data.message;
-
-            }
-            if(data.success===1){
-                errorMessage.innerText=data.message;
-            }
-        });
 
 });

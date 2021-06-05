@@ -35,7 +35,18 @@ class RateSomaj{
 
         return $stmt;
     }
+    function readOrderJudet(){
+        //Interogarea
+        $query = "SELECT 
+                        *
+                FROM
+                " . $this->table_name . " order by judet";
 
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+    }
     function readOne(){
         //in functie de judet
         $query = "SELECT
