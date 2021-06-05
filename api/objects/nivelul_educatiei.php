@@ -198,34 +198,43 @@ class NivelulEducatiei{
 
 
     function create(){
-        $query = "INSERT INTO " . $this->table_name . " ";
+        $query = "INSERT INTO
+         " . $this->table_name . "
+        (judet, Total_someri_din_care, fara_studii, invatamant_primar, invatamant_gimnazial, 
+        invatamant_liceal, invatamant_postliceal, invatamant_profesionalarte_si_meserii, invatamant_universitar, luna, an)
+     VALUES ( :judet, :TOTAL, :fara_studii, :invatamant_primar, :invatamant_gimnazial, :invatamant_liceal, :invatamant_postliceal, 
+     :invatamant_profesional, :invatamant_universitar, :luna, :an )";
 
         $stmt = $this->conn->prepare($query);
 
-    //     $query = "INSERT INTO
-    //     " . $this->table_name . "
-    // SET
-    //     name=:name, price=:price, description=:description, category_id=:category_id, created=:created";
-
-
+        
         //sanitize
         $this->judet = htmlspecialchars(strip_tags($this->judet));
         $this->TOTAL = htmlspecialchars(strip_tags($this->TOTAL));
-        $this->Sub_25_ani = htmlspecialchars(strip_tags($this->Sub_25_ani));
-        $this->_25_29_ani = htmlspecialchars(strip_tags($this->_25_29_ani));
-        $this->_30_39_ani = htmlspecialchars(strip_tags($this->_30_39_ani));
-        $this->_40_49_ani = htmlspecialchars(strip_tags($this->_40_49_ani));
-        $this->_50_55_ani = htmlspecialchars(strip_tags($this->_50_55_ani));
+        $this->fara_studii = htmlspecialchars(strip_tags($this->fara_studii));
+        $this->invatamant_primar = htmlspecialchars(strip_tags($this->invatamant_primar));
+        $this->invatamant_gimnazial = htmlspecialchars(strip_tags($this->invatamant_gimnazial));
+        $this->invatamant_liceal = htmlspecialchars(strip_tags($this->invatamant_liceal));
+        $this->invatamant_postliceal = htmlspecialchars(strip_tags($this->invatamant_postliceal));
+        $this->invatamant_profesional_arte_si_meserii = htmlspecialchars(strip_tags($this->invatamant_profesional_arte_si_meserii));
+        $this->invatamant_universitar = htmlspecialchars(strip_tags($this->invatamant_universitar));
         $this->luna = htmlspecialchars(strip_tags($this->luna));
         $this->an = htmlspecialchars(strip_tags($this->an));
 
         //bind values
-        // $stmt->bindParam(":name", $this->name);
-        // $stmt->bindParam(":price", $this->price);
-        // $stmt->bindParam(":description", $this->description);
-        // $stmt->bindParam(":category_id", $this->category_id);
-        // $stmt->bindParam(":created", $this->created);
+        $stmt->bindParam(":judet", $this->judet);
+        $stmt->bindParam(":TOTAL", $this->TOTAL);
+        $stmt->bindParam(":fara_studii", $this->fara_studii);
+        $stmt->bindParam(":invatamant_primar", $this->invatamant_primar);
+        $stmt->bindParam(":invatamant_gimnazial", $this->invatamant_gimnazial);
+        $stmt->bindParam(":invatamant_liceal", $this->invatamant_liceal);
+        $stmt->bindParam(":invatamant_postliceal", $this->invatamant_postliceal);
+        $stmt->bindParam(":invatamant_profesional", $this->invatamant_profesional_arte_si_meserii);
+        $stmt->bindParam(":invatamant_universitar", $this->invatamant_universitar);
+        $stmt->bindParam(":luna", $this->luna);
+        $stmt->bindParam(":an", $this->an);
 
+        // echo json_encode(array("message2" => $query));
         if($stmt->execute())
         {
             return true;

@@ -195,41 +195,47 @@ class RateSomaj{
 
     }
 
-
-
     }
 
 
-
     function create(){
-        $query = "INSERT INTO " . $this->table_name . " ";
+        $query = "INSERT INTO
+         " . $this->table_name . "
+        (judet, Numar_total_someri, Numar_total_someri_femei, Numar_total_someri_barbati, Numar_someri_indemnizati, 
+        Numar_someri_neindemnizati, Rata_somajului_, Rata_somajului_Feminina_, Rata_somajului_Masculina_, luna, an)
+     VALUES ( :judet, :TOTAL, :total_femei, :total_barbati, :someri_indemnizati, :someri_neindemnizati, 
+     :rata_somajului, :rata_feminina, :rata_masculina, :luna, :an )";
 
         $stmt = $this->conn->prepare($query);
 
-    //     $query = "INSERT INTO
-    //     " . $this->table_name . "
-    // SET
-    //     name=:name, price=:price, description=:description, category_id=:category_id, created=:created";
-
-
+        
         //sanitize
         $this->judet = htmlspecialchars(strip_tags($this->judet));
         $this->TOTAL = htmlspecialchars(strip_tags($this->TOTAL));
-        $this->Sub_25_ani = htmlspecialchars(strip_tags($this->Sub_25_ani));
-        $this->_25_29_ani = htmlspecialchars(strip_tags($this->_25_29_ani));
-        $this->_30_39_ani = htmlspecialchars(strip_tags($this->_30_39_ani));
-        $this->_40_49_ani = htmlspecialchars(strip_tags($this->_40_49_ani));
-        $this->_50_55_ani = htmlspecialchars(strip_tags($this->_50_55_ani));
+        $this->rata_total_femei = htmlspecialchars(strip_tags($this->rata_total_femei));
+        $this->rata_total_barbati = htmlspecialchars(strip_tags($this->rata_total_barbati));
+        $this->someri_indemnizati = htmlspecialchars(strip_tags($this->someri_indemnizati));
+        $this->someri_neindemnizati = htmlspecialchars(strip_tags($this->someri_neindemnizati));
+        $this->rata_somajului = htmlspecialchars(strip_tags($this->rata_somajului));
+        $this->rata_somajului_feminina = htmlspecialchars(strip_tags($this->rata_somajului_feminina));
+        $this->rata_somajului_masculina = htmlspecialchars(strip_tags($this->rata_somajului_masculina));
         $this->luna = htmlspecialchars(strip_tags($this->luna));
         $this->an = htmlspecialchars(strip_tags($this->an));
 
         //bind values
-        // $stmt->bindParam(":name", $this->name);
-        // $stmt->bindParam(":price", $this->price);
-        // $stmt->bindParam(":description", $this->description);
-        // $stmt->bindParam(":category_id", $this->category_id);
-        // $stmt->bindParam(":created", $this->created);
+        $stmt->bindParam(":judet", $this->judet);
+        $stmt->bindParam(":TOTAL", $this->TOTAL);
+        $stmt->bindParam(":total_femei", $this->rata_total_femei);
+        $stmt->bindParam(":total_barbati", $this->rata_total_barbati);
+        $stmt->bindParam(":someri_indemnizati", $this->someri_indemnizati);
+        $stmt->bindParam(":someri_neindemnizati", $this->someri_neindemnizati);
+        $stmt->bindParam(":rata_somajului", $this->rata_somajului);
+        $stmt->bindParam(":rata_feminina", $this->rata_somajului_feminina);
+        $stmt->bindParam(":rata_masculina", $this->rata_somajului_masculina);
+        $stmt->bindParam(":luna", $this->luna);
+        $stmt->bindParam(":an", $this->an);
 
+        // echo json_encode(array("message2" => $query));
         if($stmt->execute())
         {
             return true;
