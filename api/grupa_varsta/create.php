@@ -19,22 +19,24 @@ $data = json_decode(file_get_contents("php://input"));
 //TODO de setat parametrii care sunt necesari pentru insert
 if(
     !empty($data->judet) &&
-    !empty($data->TOTAL) && 
-    !empty($data->Sub_25_ani) &&
-    !empty($data->_25_29_ani) &&
-    !empty($data->_30_39_ani) &&
-    !empty($data->_40_49_ani) &&
-    !empty($data->_50_55_ani) &&
+    !empty($data->sub25) &&
+    !empty($data->_25_29) &&
+    !empty($data->_30_39) &&
+    !empty($data->_40_49) &&
+    !empty($data->_50_55) &&
+    !empty($data->peste55) &&
     !empty($data->luna) &&
     !empty($data->an)
 ){
     $GrupaVarsta->judet = $data->judet;
-    $GrupaVarsta->TOTAL = $data->TOTAL;
-    $GrupaVarsta->Sub_25_ani = $data->Sub_25_ani;
-    $GrupaVarsta->_25_29_ani = $data->_25_29_ani;
-    $GrupaVarsta->_30_39_ani = $data->_30_39_ani;
-    $GrupaVarsta->_40_49_ani = $data->_40_49_ani;
-    $GrupaVarsta->_50_55_ani = $data->_50_55_ani;
+    $GrupaVarsta->TOTAL = (int)$data->sub25 + $data->_25_29 + $data->_30_39;
+    $GrupaVarsta->TOTAL += (int) $data->_40_49 + $data->_50_55 + $data->peste55;
+    $GrupaVarsta->Sub_25_ani = $data->sub25;
+    $GrupaVarsta->_25_29_ani = $data->_25_29;
+    $GrupaVarsta->_30_39_ani = $data->_30_39;
+    $GrupaVarsta->_40_49_ani = $data->_40_49;
+    $GrupaVarsta->_50_55_ani = $data->_50_55;
+    $GrupaVarsta->Peste_55_ani = $data->peste55;
     $GrupaVarsta->luna = $data->luna;
     $GrupaVarsta->an = $data->an;
 

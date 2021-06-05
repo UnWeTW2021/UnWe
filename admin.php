@@ -41,14 +41,14 @@ include('Components/header.php');
             <div class="grupa-varsta-admin">
                 <label for="sub25">Sub 25 ani:</label>
                 <input type="number" name="sub25" id="sub25" >
-                <label for="25_29">25-29 ani:</label>
-                <input type="number" name="25_29" id="25_29" >
-                <label for="30_39">30-39 ani:</label>
-                <input type="number" name="30_39" id="30_39">
-                <label for="40_49">40-49 ani:</label>
-                <input type="number" name="40_49" id="40_49">
-                <label for="50_55">50-55 ani:</label>
-                <input type="number" name="50_55" id="50_55">
+                <label for="_25_29">25-29 ani:</label>
+                <input type="number" name="_25_29" id="25_29" >
+                <label for="_30_39">30-39 ani:</label>
+                <input type="number" name="_30_39" id="30_39">
+                <label for="_40_49">40-49 ani:</label>
+                <input type="number" name="_40_49" id="40_49">
+                <label for="_50_55">50-55 ani:</label>
+                <input type="number" name="_50_55" id="50_55">
                 <label for="peste55">Peste 55 ani:</label>
                 <input type="number" name="peste55" id="peste55">
             </div>

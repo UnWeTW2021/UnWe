@@ -202,34 +202,46 @@ class MedieRezidenta{
     }
 
     function create(){
-        $query = "INSERT INTO " . $this->table_name . " ";
+        $query = "INSERT INTO
+         " . $this->table_name . "
+        (judet, NUMAR_TOTAL_SOMERI, NUMAR_TOTAL_SOMERI_FEMEI, NUMAR_TOTAL_SOMERI_BARBATI, NUMAR_TOTAL_SOMERI_DIN_MEDIUL_URBAN,
+        NUMAR_SOMERI_FEMEI_DIN_MEDIUL_URBAN, NUMAR_SOMERI_BARBATI_DIN_MEDIUL_URBAN, NUMAR_TOTAL_SOMERI_DIN_MEDIUL_RURAL, 
+        NUMAR_SOMERI_FEMEI_DIN_MEDIUL_RURAL, NUMAR_SOMERI_BARBATI_DIN_MEDIUL_RURAL, luna, an)
+     VALUES ( :judet, :TOTAL, :SOMERI_FEMEI, :SOMERI_BARBATI, :TOTAL_URBAN, :FEMEI_URBAN, :BARBATI_URBAN, 
+     :TOTAL_RURAL, :FEMEI_RURAL, :BARBATI_RURAL, :luna, :an )";
 
         $stmt = $this->conn->prepare($query);
 
-    //     $query = "INSERT INTO
-    //     " . $this->table_name . "
-    // SET
-    //     name=:name, price=:price, description=:description, category_id=:category_id, created=:created";
-
-
+        
         //sanitize
         $this->judet = htmlspecialchars(strip_tags($this->judet));
         $this->TOTAL = htmlspecialchars(strip_tags($this->TOTAL));
-        $this->Sub_25_ani = htmlspecialchars(strip_tags($this->Sub_25_ani));
-        $this->_25_29_ani = htmlspecialchars(strip_tags($this->_25_29_ani));
-        $this->_30_39_ani = htmlspecialchars(strip_tags($this->_30_39_ani));
-        $this->_40_49_ani = htmlspecialchars(strip_tags($this->_40_49_ani));
-        $this->_50_55_ani = htmlspecialchars(strip_tags($this->_50_55_ani));
+        $this->TOTAL_SOMERI_FEMEI = htmlspecialchars(strip_tags($this->TOTAL_SOMERI_FEMEI));
+        $this->TOTAL_SOMERI_BARBATI = htmlspecialchars(strip_tags($this->TOTAL_SOMERI_BARBATI));
+        $this->TOTAL_SOMERI_DIN_MEDIUL_URBAN = htmlspecialchars(strip_tags($this->TOTAL_SOMERI_DIN_MEDIUL_URBAN));
+        $this->SOMERI_FEMEI_DIN_MEDIUL_URBAN = htmlspecialchars(strip_tags($this->SOMERI_FEMEI_DIN_MEDIUL_URBAN));
+        $this->SOMERI_BARBATI_DIN_MEDIUL_URBAN = htmlspecialchars(strip_tags($this->SOMERI_BARBATI_DIN_MEDIUL_URBAN));
+        $this->TOTAL_SOMERI_DIN_MEDIUL_RURAL = htmlspecialchars(strip_tags($this->TOTAL_SOMERI_DIN_MEDIUL_RURAL));
+        $this->SOMERI_FEMEI_DIN_MEDIUL_RURAL = htmlspecialchars(strip_tags($this->SOMERI_FEMEI_DIN_MEDIUL_RURAL));
+        $this->SOMERI_BARBATI_DIN_MEDIUL_RURAL = htmlspecialchars(strip_tags($this->SOMERI_BARBATI_DIN_MEDIUL_RURAL));
         $this->luna = htmlspecialchars(strip_tags($this->luna));
         $this->an = htmlspecialchars(strip_tags($this->an));
 
         //bind values
-        // $stmt->bindParam(":name", $this->name);
-        // $stmt->bindParam(":price", $this->price);
-        // $stmt->bindParam(":description", $this->description);
-        // $stmt->bindParam(":category_id", $this->category_id);
-        // $stmt->bindParam(":created", $this->created);
+        $stmt->bindParam(":judet", $this->judet);
+        $stmt->bindParam(":TOTAL", $this->TOTAL);
+        $stmt->bindParam(":SOMERI_FEMEI", $this->TOTAL_SOMERI_FEMEI);
+        $stmt->bindParam(":SOMERI_BARBATI", $this->TOTAL_SOMERI_BARBATI);
+        $stmt->bindParam(":TOTAL_URBAN", $this->TOTAL_SOMERI_DIN_MEDIUL_URBAN);
+        $stmt->bindParam(":FEMEI_URBAN", $this->SOMERI_FEMEI_DIN_MEDIUL_URBAN);
+        $stmt->bindParam(":BARBATI_URBAN", $this->SOMERI_BARBATI_DIN_MEDIUL_URBAN);
+        $stmt->bindParam(":TOTAL_RURAL", $this->TOTAL_SOMERI_DIN_MEDIUL_RURAL);
+        $stmt->bindParam(":FEMEI_RURAL", $this->SOMERI_FEMEI_DIN_MEDIUL_RURAL);
+        $stmt->bindParam(":BARBATI_RURAL", $this->SOMERI_BARBATI_DIN_MEDIUL_RURAL);
+        $stmt->bindParam(":luna", $this->luna);
+        $stmt->bindParam(":an", $this->an);
 
+        // echo json_encode(array("message2" => $query));
         if($stmt->execute())
         {
             return true;

@@ -49,16 +49,14 @@ class GrupaVarsta{
     }
 
     function create(){
-        $query = "INSERT INTO " . $this->table_name . " ";
+        $query = "INSERT INTO
+         " . $this->table_name . "
+        (judet, TOTAL, Sub_25_ani, 25_29_ani, 30_39_ani, 40_49_ani, 50_55_ani, peste_55_ani, luna, an)
+     VALUES ( :judet, :TOTAL, :Sub_25_ani, :_25_29_ani, :_30_39_ani, :_40_49_ani, :_50_55_ani, :peste_55_ani, :luna, :an )";
 
         $stmt = $this->conn->prepare($query);
 
-    //     $query = "INSERT INTO
-    //     " . $this->table_name . "
-    // SET
-    //     name=:name, price=:price, description=:description, category_id=:category_id, created=:created";
-
-
+        
         //sanitize
         $this->judet = htmlspecialchars(strip_tags($this->judet));
         $this->TOTAL = htmlspecialchars(strip_tags($this->TOTAL));
@@ -72,12 +70,18 @@ class GrupaVarsta{
         $this->an = htmlspecialchars(strip_tags($this->an));
 
         //bind values
-        // $stmt->bindParam(":name", $this->name);
-        // $stmt->bindParam(":price", $this->price);
-        // $stmt->bindParam(":description", $this->description);
-        // $stmt->bindParam(":category_id", $this->category_id);
-        // $stmt->bindParam(":created", $this->created);
+        $stmt->bindParam(":judet", $this->judet);
+        $stmt->bindParam(":TOTAL", $this->TOTAL);
+        $stmt->bindParam(":Sub_25_ani", $this->Sub_25_ani);
+        $stmt->bindParam(":_25_29_ani", $this->_25_29_ani);
+        $stmt->bindParam(":_30_39_ani", $this->_30_39_ani);
+        $stmt->bindParam(":_40_49_ani", $this->_40_49_ani);
+        $stmt->bindParam(":_50_55_ani", $this->_50_55_ani);
+        $stmt->bindParam(":peste_55_ani", $this->Peste_55_ani);
+        $stmt->bindParam(":luna", $this->luna);
+        $stmt->bindParam(":an", $this->an);
 
+        // echo json_encode(array("message2" => $query));
         if($stmt->execute())
         {
             return true;
