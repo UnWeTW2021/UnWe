@@ -53,7 +53,7 @@
   </div>
 
   <div class="grafic_general">
-    <?php include('Grafice/grafic-someri-varsta.php');?>
+
     <div class="container">
     <canvas id="someriVarsteChart"></canvas>
     </div>    

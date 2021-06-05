@@ -1,3 +1,6 @@
+if(localStorage.getItem('token')==null)
+    window.location.replace("login.php");
+
 let listWrapper = document.getElementsByClassName("list-wrapper")[0];
 let table = document.getElementById("list");
 let tableResponsive=document.getElementsByClassName("table-responsive")[0];
@@ -25,6 +28,8 @@ var results ;
 const prevBtn=document.getElementById("prev");
 const nextBtn=document.getElementById("next");
 let pagination=document.getElementsByClassName("pagination")[0];
+
+
 
 
 form.classList.add("hidden");
@@ -129,7 +134,14 @@ let tables=document.querySelectorAll("table");
                     data1.grupa_varsta[i].peste_55_ani + ' </th> <th scope="col">' +
                     data1.grupa_varsta[i].luna + ' </th> <th scope="col">' +
                     data1.grupa_varsta[i].an + ' </th> <th scope="col">' +
-                    '<button data-judet='+data1.grupa_varsta[i].judet+' data-luna='+data1.grupa_varsta[i].luna+' data-an='+data1.grupa_varsta[i].an +'>Delete</button>' + '</th>';
+                    '  <form class=deleteRow id="row'+i+'">' +
+                    '<input class="hidden" type="text" name="judet" value='+data1.grupa_varsta[i].judet+'> ' +
+                    '<input class="hidden"  type="number" name="luna" value='+data1.grupa_varsta[i].luna+'> '+
+                    '<input  class="hidden" type="number" name="an" value='+data1.grupa_varsta[i].an+'> '+
+                    '<button type=submit>Delete</button></th>';
+
+
+
 
                 tbody.appendChild(row);
             }
@@ -181,8 +193,11 @@ let tables=document.querySelectorAll("table");
                     data1.medie_rezidenta[i].NUMAR_TOTAL_SOMERI_FEMEI + ' </th> <th scope="col">' +
                     data1.medie_rezidenta[i].luna + ' </th> <th scope="col">' +
                     data1.medie_rezidenta[i].an + ' </th> <th scope="col">' +
-                    '<button data-judet='+data1.medie_rezidenta[i].judet+' data-luna='+data1.medie_rezidenta[i].luna+' data-an='+data1.medie_rezidenta[i].an +'>Delete</button>' + '</th>';
-
+                    '  <form class=deleteRow id="row'+i+'">' +
+                    '<input class="hidden" type="text" name="judet" value='+data1.medie_rezidenta[i].judet+'> ' +
+                    '<input class="hidden"  type="number" name="luna" value='+data1.medie_rezidenta[i].luna+'> '+
+                    '<input  class="hidden" type="number" name="an" value='+data1.medie_rezidenta[i].an+'> '+
+                    '<button type=submit>Delete</button></th>';
                 tbody.appendChild(row);
             }
             newTable.appendChild(tbody);
@@ -233,8 +248,11 @@ let tables=document.querySelectorAll("table");
                     data1.nivelul_educatiei[i].invatamant_universitar + ' </th> <th scope="col">' +
                     data1.nivelul_educatiei[i].luna + ' </th> <th scope="col">' +
                     data1.nivelul_educatiei[i].an + ' </th> <th scope="col">' +
-                    '<button data-judet='+data1.nivelul_educatiei[i].judet+' data-luna='+data1.nivelul_educatiei[i].luna+' data-an='+data1.nivelul_educatiei[i].an +'>Delete</button>' + '</th>';
-
+                    '  <form class=deleteRow id="row'+i+'">' +
+                    '<input class="hidden" type="text" name="judet" value='+data1.nivelul_educatiei[i].judet+'> ' +
+                    '<input class="hidden"  type="number" name="luna" value='+data1.nivelul_educatiei[i].luna+'> '+
+                    '<input  class="hidden" type="number" name="an" value='+data1.nivelul_educatiei[i].an+'> '+
+                    '<button type=submit>Delete</button></th>';
                 tbody.appendChild(row);
             }
             newTable.appendChild(tbody);
@@ -284,8 +302,11 @@ let tables=document.querySelectorAll("table");
                     data1.rate_somaj[i].Rata_somajului_Masculina_ + ' </th> <th scope="col">' +
                     data1.rate_somaj[i].luna + ' </th> <th scope="col">' +
                     data1.rate_somaj[i].an + ' </th> <th scope="col">' +
-                    '<button data-judet='+data1.rate_somaj[i].judet+' data-luna='+data1.rate_somaj[i].luna+' data-an='+data1.rate_somaj[i].an +'>Delete</button>' + '</th>';
-
+                    '  <form class=deleteRow id="row'+i+'">' +
+                    '<input class="hidden" type="text" name="judet" value='+data1.rate_somaj[i].judet+'> ' +
+                    '<input class="hidden"  type="number" name="luna" value='+data1.rate_somaj[i].luna+'> '+
+                    '<input  class="hidden" type="number" name="an" value='+data1.rate_somaj[i].an+'> '+
+                    '<button type=submit>Delete</button></th>';
                 tbody.appendChild(row);
             }
             newTable.appendChild(tbody);
@@ -297,6 +318,15 @@ let tables=document.querySelectorAll("table");
     else{
   errorMessage.innerText="Selecteaza macar un dataset";
     }
+var deleteForms=document.querySelectorAll('.deleteRow');
+    [...deleteForms].forEach(item => {
+        item.addEventListener('submit', event => {
+            event.preventDefault();
+            console.log(item.id)
+            const data = getData(item.id);
+            console.log(JSON.stringify(data));
+        })
+    })
 
     if(page===1){
         prevBtn.classList.add("hidden")
@@ -314,7 +344,7 @@ grupaVarstaAdmin.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = getData('grupa-varsta');
     console.log(JSON.stringify(data));
-    postData('',data)
+    postData('http://localhost/UnWe/api/grupa_varsta/create.php',data)
         .then(data => {
             console.log(data);
             if(data.success===0) {
@@ -341,7 +371,7 @@ medieRezidentaAdmin.addEventListener('submit', (event) => {
     const data = getData('medie-rezidenta');
     console.log(JSON.stringify(data));
     errorMessage.innerText="Creat in baza de date";
-    postData('',data)
+    postData('http://localhost/UnWe/api/medie_rezidenta/create.php',data)
         .then(data => {
             console.log(data);
             if(data.success===0) {
@@ -363,7 +393,7 @@ nivelulEducatieiAdmin.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = getData('nivelul-educatiei');
     console.log(JSON.stringify(data));
-    postData('',data)
+    postData('http://localhost/UnWe/api/nivelul_educatiei/create.php',data)
         .then(data => {
             console.log(data);
             if(data.success===0) {
@@ -386,7 +416,7 @@ rateSomajAdmin.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = getData('rate-somaj');
     console.log(JSON.stringify(data));
-    postData('',data)
+    postData('http://localhost/UnWe/api/rate_somaj/create.php',data)
         .then(data => {
             console.log(data);
             if(data.success===0) {
