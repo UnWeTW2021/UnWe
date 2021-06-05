@@ -13,6 +13,7 @@ class GrupaVarsta{
     public $_30_39_ani;
     public $_40_49_ani;
     public $_50_55_ani;
+    public $Peste_55_ani;
     public $luna;
     public $an;
     public $luna2;
@@ -66,6 +67,7 @@ class GrupaVarsta{
         $this->_30_39_ani = htmlspecialchars(strip_tags($this->_30_39_ani));
         $this->_40_49_ani = htmlspecialchars(strip_tags($this->_40_49_ani));
         $this->_50_55_ani = htmlspecialchars(strip_tags($this->_50_55_ani));
+        $this->Peste_55_ani = htmlspecialchars(strip_tags($this->Peste_55_ani));
         $this->luna = htmlspecialchars(strip_tags($this->luna));
         $this->an = htmlspecialchars(strip_tags($this->an));
 
@@ -106,6 +108,7 @@ class GrupaVarsta{
             $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
             $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
             $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
+            $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
         }
 
     }
@@ -137,6 +140,7 @@ class GrupaVarsta{
                 $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
                 $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
                 $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
+                $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
             }
         }
         else{
@@ -164,6 +168,7 @@ class GrupaVarsta{
             $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
             $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
             $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
+            $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
         }
 
         $query = "SELECT 
@@ -190,6 +195,7 @@ class GrupaVarsta{
             $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
             $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
             $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
+            $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
         }
 
         $query = "SELECT 
@@ -215,6 +221,7 @@ class GrupaVarsta{
             $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
             $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
             $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
+            $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
         }
 
         }   

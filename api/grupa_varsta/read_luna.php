@@ -32,6 +32,7 @@ if($GrupaVarsta->TOTAL != null)
         "30_39_ani" => $GrupaVarsta->_30_39_ani,
         "40_49_ani" => $GrupaVarsta->_40_49_ani,
         "50_55_ani" => $GrupaVarsta->_50_55_ani,
+        "peste_55_ani" => $GrupaVarsta->Peste_55_ani,
         "luna" => $GrupaVarsta->luna,
         "an" => $GrupaVarsta->an,
         "luna2" => $GrupaVarsta->luna2,
