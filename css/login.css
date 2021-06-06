@@ -54,3 +54,31 @@
     color: red;
 
 }
+@media screen and (max-width: 1000px) {
+    .login-input-wrapper {
+
+        width: 30vw;
+    }
+}
+@media screen and (max-width: 900px) {
+    .login-form button{
+        margin-top: 5vw;
+        padding: 1vw 4vw;
+    }
+    .login-input-wrapper {
+
+        width: 40vw;
+    }
+}
+@media screen and (max-width: 500px) {
+    .login-input-wrapper {
+
+        width: 80vw;
+    }
+}
+@media screen and (max-width: 400px) {
+    .login-input-wrapper {
+
+        width: 90vw;
+    }
+}

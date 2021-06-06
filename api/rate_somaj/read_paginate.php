@@ -20,6 +20,7 @@ if ($num > 0) {
 
     $data_arr = array();
     $data_arr["rate_somaj"] = array();
+    $data_arr['results']=$num;
     $data_arrALL = array();
     $data_arrALL["rate_somaj"] = array();
 

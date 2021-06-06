@@ -21,6 +21,7 @@ if($num > 0) {
 
     $data_arr = array();
     $data_arr["medie_rezidenta"] = array();
+    $data_arr['results']=$num;
     $data_arrALL = array();
     $data_arrALL['medie_rezidenta'] = array();
 

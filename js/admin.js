@@ -13,9 +13,9 @@ let medieRezidentaAdmin=document.getElementById("medie-rezidenta");
 let nivelulEducatieiAdmin=document.getElementById("nivelul-educatiei");
 let rateSomajAdmin=document.getElementById("rate-somaj");
 let errorMessage = document.getElementsByClassName("error-message")[0];
-
+var deleteURL=""
 let apiUrl
-import {getapi, postData} from "../js/utils.js";
+import {getapi, postData,deleteData} from "../js/utils.js";
 const medieVarsta=["judet","TOTAL","Sub 25 ani","25 29 ani","30 39 ani","40 49 ani","50 55 ani","peste 55 ani","luna","an"]
 const medieRezidenta=["JUDET","NUMAR TOTAL SOMERI","NUMAR TOTAL SOMERI FEMEI","NUMAR TOTAL SOMERI BARBATI","NUMAR TOTAL SOMERI DIN MEDIUL URBAN","NUMAR SOMERI FEMEI DIN MEDIUL URBAN","NUMAR SOMERI BARBATI DIN MEDIUL URBAN","NUMAR TOTAL SOMERI DIN MEDIUL RURAL","NUMAR SOMERI FEMEI DIN MEDIUL RURAL","NUMAR SOMERI BARBATI DIN MEDIUL RURAL","luna","an"]
 const nivelEducatie=["JUDET","Total someri din care","fara studii","invatamant primar","invatamant gimnazial","invatamant liceal","invatamant postliceal","invatamant profesionalarte si meserii","invatamant universitar","luna","an"]
@@ -93,7 +93,7 @@ let tables=document.querySelectorAll("table");
 
 
     if(adminSelectValue===1){
-
+deleteURL="http://localhost/UnWe/api/grupa_varsta/delete.php"
 newTable.classList.add("grupa")
   grupaVarstaAdmin.classList.remove("hidden")
 
@@ -154,6 +154,7 @@ newTable.classList.add("grupa")
         }
     }
     else if(adminSelectValue===2){
+        deleteURL="http://localhost/UnWe/api/medie_rezidenta/delete.php"
         newTable.classList.add("medie")
         pagination.classList.remove("hidden")
         form.classList.remove("hidden")
@@ -198,7 +199,7 @@ newTable.classList.add("grupa")
                     data1.medie_rezidenta[i].luna + ' </td> <td scope="col">' +
                     data1.medie_rezidenta[i].an + ' </td> <td scope="col">' +
                     '  <form class=deleteRow id="row'+i+'">' +
-                    '<input class="hidden" type="text" name="judet" value='+data1.medie_rezidenta[i].judet+'> ' +
+                    '<input class="hidden" type="text" name="judet" value='+data1.medie_rezidenta[i].JUDET+'> ' +
                     '<input class="hidden"  type="number" name="luna" value='+data1.medie_rezidenta[i].luna+'> '+
                     '<input  class="hidden" type="number" name="an" value='+data1.medie_rezidenta[i].an+'> '+
                     '<button type=submit>Delete</button></td>';
@@ -211,6 +212,7 @@ newTable.classList.add("grupa")
 
     }
     else if(adminSelectValue===3){
+        deleteURL="http://localhost/UnWe/api/nivelul_educatiei/delete.php"
         newTable.classList.add("nivel")
         pagination.classList.remove("hidden")
         form.classList.remove("hidden")
@@ -254,7 +256,7 @@ newTable.classList.add("grupa")
                     data1.nivelul_educatiei[i].luna + ' </td> <td scope="col">' +
                     data1.nivelul_educatiei[i].an + ' </td> <td scope="col">' +
                     '  <form class=deleteRow id="row'+i+'">' +
-                    '<input class="hidden" type="text" name="judet" value='+data1.nivelul_educatiei[i].judet+'> ' +
+                    '<input class="hidden" type="text" name="judet" value='+data1.nivelul_educatiei[i].JUDET+'> ' +
                     '<input class="hidden"  type="number" name="luna" value='+data1.nivelul_educatiei[i].luna+'> '+
                     '<input  class="hidden" type="number" name="an" value='+data1.nivelul_educatiei[i].an+'> '+
                     '<button type=submit>Delete</button></td>';
@@ -266,6 +268,7 @@ newTable.classList.add("grupa")
 
 
     }    else if(adminSelectValue===4){
+        deleteURL="http://localhost/UnWe/api/rate_somaj/delete.php"
         newTable.classList.add("rate")
         pagination.classList.remove("hidden")
         form.classList.remove("hidden")
@@ -324,16 +327,35 @@ newTable.classList.add("grupa")
     else{
   errorMessage.innerText="Selecteaza macar un dataset";
     }
-var deleteForms=document.querySelectorAll('.deleteRow');
+    var deleteForms=document.querySelectorAll('.deleteRow');
     [...deleteForms].forEach(item => {
         item.addEventListener('submit', event => {
             event.preventDefault();
             console.log(item.id)
             const data = getData(item.id);
             console.log(JSON.stringify(data));
+
+            deleteData(deleteURL,data)
+                .then(data => {
+                    console.log(data);
+                    if(data.success===0) {
+
+                        errorMessage.innerText=data.message;
+
+                    }
+                    if(data.success===1){
+                        errorMessage.innerText=data.message;
+
+                    }
+                    renderPage();
+                    errorMessage.innerText="Sters cu SUCCES"
+                });
+
+            setTimeout(function(){
+                errorMessage.innerText="";
+            }, 3000);
         })
     })
-
     if(page===1){
         prevBtn.classList.add("hidden")
     }
@@ -366,9 +388,11 @@ grupaVarstaAdmin.addEventListener('submit', (event) => {
                 message.innerText=data.message;
 
             }
+            renderPage()
+            errorMessage.innerText="Creat in baza de date";
         });
 
-    errorMessage.innerText="Creat in baza de date";
+
 
     setTimeout(function(){
         errorMessage.innerText="";
@@ -393,6 +417,8 @@ medieRezidentaAdmin.addEventListener('submit', (event) => {
                 message.innerText=data.message;
 
             }
+            renderPage()
+            errorMessage.innerText="Creat in baza de date";
         });
     setTimeout(function(){
         errorMessage.innerText="";
@@ -415,8 +441,10 @@ nivelulEducatieiAdmin.addEventListener('submit', (event) => {
                 message.innerText=data.message;
 
             }
+            renderPage()
+            errorMessage.innerText="Creat in baza de date";
         });
-    errorMessage.innerText="Creat in baza de date";
+
     setTimeout(function(){
         errorMessage.innerText="";
     }, 3000);
@@ -438,8 +466,10 @@ rateSomajAdmin.addEventListener('submit', (event) => {
                 message.innerText=data.message;
 
             }
+            renderPage()
+            errorMessage.innerText="Creat in baza de date";
         });
-    errorMessage.innerText="Creat in baza de date";
+
     setTimeout(function(){
         errorMessage.innerText="";
     }, 3000);

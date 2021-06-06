@@ -40,6 +40,12 @@ body {
     width: min-content;
 
 }
+.admin-select-form-wrapper select{
+    width: 11vw !important;
+    margin-top: 3em !important;
+    padding: 0.25vw 0.5vw !important;
+    font-size: 1.5em !important;
+}
 .admin-form-wrapper form{
     flex-direction: row;
     width: auto;
@@ -181,81 +187,25 @@ pagination-button:hover {
 #prev{
     margin-right: 3%;
 }
-/*@media*/
-/*only screen and (max-width: 760px),*/
-/*(min-device-width: 768px) and (max-device-width: 1024px)  {*/
+@media screen and (max-width: 1600px) {
+    .admin-select-form-wrapper select {
+        width: 20vw !important;
+    }
+    .error-message{
+        font-size: 1.7vw;
+    }
+}
 
-/*    !* Force table to not be like tables anymore *!*/
-/*     table, thead, tbody, th, td, tr {*/
-/*        display: block;*/
-/*    }*/
-
-/*    !* Hide table headers (but not display: none;, for accessibility) *!*/
-/*    .table  thead tr {*/
-/*        position: absolute;*/
-/*        top: -9999px;*/
-/*        left: -9999px;*/
-/*    }*/
-
-/*    .table  tr { border: 1px solid #ccc; }*/
-
-/*   .table td {*/
-/*        !* Behave  like a "row" *!*/
-/*        border: none;*/
-/*        border-bottom: 1px solid #eee;*/
-/*        position: relative;*/
-/*        padding-left: 50%;*/
-
-/*    }*/
-
-/*    .table  td:before {*/
-/*        !* Now like a table header *!*/
-/*        position: absolute;*/
-/*        !* Top/left values mimic padding *!*/
-/*        top: 6px;*/
-/*        left: 6px;*/
-/*        width: 45%;*/
-/*        padding-right: 10px;*/
-/*        white-space: nowrap;*/
-/*    }*/
-
-/*    !**/
-/*    Label the data*/
-/*    *!*/
-/*    .grupa   td:nth-of-type(1):before { content: "judet"; }*/
-/*    .grupa td:nth-of-type(2):before { content: "TOTAL"; }*/
-/*    .grupa  td:nth-of-type(3):before { content: "Sub 25 ani"; }*/
-/*    .grupa  td:nth-of-type(4):before { content: "25 29 ani"; }*/
-/*    .grupa   td:nth-of-type(5):before { content: "30 39 ani"; }*/
-/*    .grupa  td:nth-of-type(6):before { content: "40 49 ani"; }*/
-/*    .grupa   td:nth-of-type(7):before { content: "50 55 ani"; }*/
-/*    .grupa  td:nth-of-type(8):before { content: "peste 55 ani	"; }*/
-/*    .grupa   td:nth-of-type(9):before { content: "luna"; }*/
-/*    .grupa  td:nth-of-type(10):before { content: "an"; }*/
-
-
-
-/*.medie */
-/*    .medie   td:nth-of-type(1):before { content: "JUDET"; }*/
-/*    .medie td:nth-of-type(2):before { content: "NUMAR TOTAL SOMERI";    white-space: break-spaces; }*/
-/*    .medie  td:nth-of-type(3):before { content: "NUMAR TOTAL SOMERI FEMEI";     white-space: break-spaces;}*/
-/*    .medie  td:nth-of-type(4):before { content: "NUMAR TOTAL SOMERI BARBATI";    white-space: break-spaces; }*/
-/*    .medie   td:nth-of-type(5):before { content: "NUMAR TOTAL SOMERI DIN MEDIUL URBAN";    white-space: break-spaces; }*/
-/*    .medie  td:nth-of-type(6):before { content: "NUMAR SOMERI FEMEI DIN MEDIUL URBAN";    white-space: break-spaces; }*/
-/*    .medie   td:nth-of-type(7):before { content: "NUMAR SOMERI BARBATI DIN MEDIUL URBAN";    white-space: break-spaces; }*/
-/*    .medie  td:nth-of-type(8):before { content: "NUMAR TOTAL SOMERI DIN MEDIUL RURAL";     white-space: break-spaces;}*/
-/*    .medie   td:nth-of-type(9):before { content: "NUMAR SOMERI BARBATI DIN MEDIUL RURAL	";     white-space: break-spaces;}*/
-/*    .medie   td:nth-of-type(10):before { content: "luna"; }*/
-
-/*    .medie  td:nth-of-type(11):before { content: "an"; }*/
-/*}*/
 
 @media screen and (max-width: 1100px) {
+    .admin-select-form-wrapper select {
+        width: 30vw !important;
+    }
     .error-message{
         font-size: 5vw;
     }
     .admin-select-form-wrapper select{
-        width: 40vw;
+        width: 40vw !important;
     }
         /*.table {*/
     /*    width: 100%;*/
@@ -287,8 +237,8 @@ pagination-button:hover {
     }
 }
 @media screen and (max-width: 500px) {
-    .admin-select-form-wrapper select{
-        width: 80vw;
+    .admin-select-form-wrapper select {
+        width: 80vw !important;
     }
     .admin-form-wrapper form input {
         width: 80vw;
@@ -300,3 +250,4 @@ pagination-button:hover {
         font-size: 8vw;
     }
 }
+

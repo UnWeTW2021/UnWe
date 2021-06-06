@@ -1,3 +1,7 @@
+if(localStorage.getItem('token')!==null)
+    window.location.replace("admin.php");
+
+
 let form = document.getElementById('login-form');
 let btnSubmit=document.getElementById('login-button');
 let email=document.getElementById("email");
