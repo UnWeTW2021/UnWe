@@ -231,5 +231,33 @@ class GrupaVarsta{
         }   
     }
 
+    function delete(){
+  
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " 
+        WHERE judet = UPPER(?) AND an = ? AND luna = ?";
+      
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+      
+        // sanitize
+        $this->judet=htmlspecialchars(strip_tags($this->judet));
+        $this->luna=htmlspecialchars(strip_tags($this->luna));
+        $this->an=htmlspecialchars(strip_tags($this->an));
+      
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->judet);
+        $stmt->bindParam(2, $this->an);
+        $stmt->bindParam(3, $this->luna);
+      
+        // echo json_encode($stmt);
+
+        if($stmt->execute()){
+            return true;
+        }
+      
+        return false;
+    }
+
 }
 ?>
