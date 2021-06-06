@@ -69,7 +69,7 @@ else:
 
                     $jwt = new JwtHandler();
                     $token = $jwt->_jwt_encode_data(
-                        'http://localhost/UnWe/',
+                        'https://unwe.herokuapp.com/',
                         array("user_id"=> $row['id'])
                     );
 

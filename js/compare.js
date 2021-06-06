@@ -65,14 +65,14 @@ async function renderPage(e) {
     console.log(dataValue)
     if (dataValue === 1) {
 
-        baseUrl = "http://localhost/UnWe/api/grupa_varsta/"
+        baseUrl = "https://unwe.herokuapp.com/api/grupa_varsta/"
     } else if (dataValue === 2) {
-        baseUrl = "http://localhost/UnWe/api/grupa_varsta/"
+        baseUrl = "https://unwe.herokuapp.com/api/grupa_varsta/"
 
     } else if (dataValue === 3) {
-        baseUrl = "http://localhost/UnWe/api/grupa_varsta/"
+        baseUrl = "https://unwe.herokuapp.com/api/grupa_varsta/"
     } else if (dataValue === 4) {
-        baseUrl = "http://localhost/UnWe/api/grupa_varsta/"
+        baseUrl = "https://unwe.herokuapp.com/api/grupa_varsta/"
     } else {
 
         errorMessage.innerText = "Alegeti un dataset!"

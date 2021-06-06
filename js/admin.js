@@ -93,12 +93,12 @@ let tables=document.querySelectorAll("table");
 
 
     if(adminSelectValue===1){
-deleteURL="http://localhost/UnWe/api/grupa_varsta/delete.php"
+deleteURL="https://unwe.herokuapp.com/api/grupa_varsta/delete.php"
 newTable.classList.add("grupa")
   grupaVarstaAdmin.classList.remove("hidden")
 
         pagination.classList.remove("hidden")
-      apiUrl=new URL("http://localhost/UnWe/api/grupa_varsta/read_paginate.php");
+      apiUrl=new URL("https://unwe.herokuapp.com/api/grupa_varsta/read_paginate.php");
         Object.keys(params).forEach(key => apiUrl.searchParams.append(key, params[key]))
         console.log(apiUrl)
      for (let i=0;i<medieVarsta.length;i++)
@@ -154,12 +154,12 @@ newTable.classList.add("grupa")
         }
     }
     else if(adminSelectValue===2){
-        deleteURL="http://localhost/UnWe/api/medie_rezidenta/delete.php"
+        deleteURL="https://unwe.herokuapp.com/api/medie_rezidenta/delete.php"
         newTable.classList.add("medie")
         pagination.classList.remove("hidden")
         form.classList.remove("hidden")
         medieRezidentaAdmin.classList.remove("hidden")
-        apiUrl=new URL("http://localhost/UnWe/api/medie_rezidenta/read_paginate.php")
+        apiUrl=new URL("https://unwe.herokuapp.com/api/medie_rezidenta/read_paginate.php")
         Object.keys(params).forEach(key => apiUrl.searchParams.append(key, params[key]))
         for (let i=0;i<medieRezidenta.length;i++)
         {
@@ -212,12 +212,12 @@ newTable.classList.add("grupa")
 
     }
     else if(adminSelectValue===3){
-        deleteURL="http://localhost/UnWe/api/nivelul_educatiei/delete.php"
+        deleteURL="https://unwe.herokuapp.com/api/nivelul_educatiei/delete.php"
         newTable.classList.add("nivel")
         pagination.classList.remove("hidden")
         form.classList.remove("hidden")
         nivelulEducatieiAdmin.classList.remove("hidden")
-        apiUrl=new URL("http://localhost/UnWe/api/nivelul_educatiei/read_paginate.php");
+        apiUrl=new URL("https://unwe.herokuapp.com/api/nivelul_educatiei/read_paginate.php");
         Object.keys(params).forEach(key => apiUrl.searchParams.append(key, params[key]))
         for (let i=0;i<nivelEducatie.length;i++)
         {
@@ -268,12 +268,12 @@ newTable.classList.add("grupa")
 
 
     }    else if(adminSelectValue===4){
-        deleteURL="http://localhost/UnWe/api/rate_somaj/delete.php"
+        deleteURL="https://unwe.herokuapp.com/api/rate_somaj/delete.php"
         newTable.classList.add("rate")
         pagination.classList.remove("hidden")
         form.classList.remove("hidden")
         rateSomajAdmin.classList.remove("hidden")
-        apiUrl=new URL("http://localhost/UnWe/api/rate_somaj/read_paginate.php");
+        apiUrl=new URL("https://unwe.herokuapp.com/api/rate_somaj/read_paginate.php");
         Object.keys(params).forEach(key => apiUrl.searchParams.append(key, params[key]))
         for (let i=0;i<rateSomaj.length;i++)
         {
@@ -376,7 +376,7 @@ grupaVarstaAdmin.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = getData('grupa-varsta');
     console.log(JSON.stringify(data));
-    postData('http://localhost/UnWe/api/grupa_varsta/create.php',data)
+    postData('https://unwe.herokuapp.com/api/grupa_varsta/create.php',data)
         .then(data => {
             console.log(data);
             if(data.success===0) {
@@ -405,7 +405,7 @@ medieRezidentaAdmin.addEventListener('submit', (event) => {
     const data = getData('medie-rezidenta');
     console.log(JSON.stringify(data));
     errorMessage.innerText="Creat in baza de date";
-    postData('http://localhost/UnWe/api/medie_rezidenta/create.php',data)
+    postData('https://unwe.herokuapp.com/api/medie_rezidenta/create.php',data)
         .then(data => {
             console.log(data);
             if(data.success===0) {
@@ -429,7 +429,7 @@ nivelulEducatieiAdmin.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = getData('nivelul-educatiei');
     console.log(JSON.stringify(data));
-    postData('http://localhost/UnWe/api/nivelul_educatiei/create.php',data)
+    postData('https://unwe.herokuapp.com/api/nivelul_educatiei/create.php',data)
         .then(data => {
             console.log(data);
             if(data.success===0) {
@@ -454,7 +454,7 @@ rateSomajAdmin.addEventListener('submit', (event) => {
     event.preventDefault();
     const data = getData('rate-somaj');
     console.log(JSON.stringify(data));
-    postData('http://localhost/UnWe/api/rate_somaj/create.php',data)
+    postData('https://unwe.herokuapp.com/api/rate_somaj/create.php',data)
         .then(data => {
             console.log(data);
             if(data.success===0) {
