@@ -28,12 +28,12 @@ function OpenCon()
 {
 
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $servername = "eu-cdbr-west-01.cleardb.com";
+    $username = "heroku_5b996654482468a";
+    $password = "c5ab036d";
 
     try {
-        $conn = new PDO("mysql:host=$servername;dbname=unwe", $username, $password);
+        $conn = new PDO("mysql:host=$servername;dbname=heroku_5b996654482468a", $username, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //   echo "Connected successfully";
