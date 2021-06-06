@@ -29,7 +29,7 @@ function OpenCon()
 
 
     $servername = "eu-cdbr-west-01.cleardb.com";
-    $username = "heroku_5b996654482468a";
+    $username = "b11327676eab99";
     $password = "c5ab036d";
 
     try {
