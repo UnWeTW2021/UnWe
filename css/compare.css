@@ -2,7 +2,12 @@
 /*    display: flex;*/
 
 /*}*/
-.filter-wrapper{
+
+button:hover,
+button:focus, select:hover, select:focus {
+    outline: unset;
+}
+.page-wrapper{
     flex: 1;
 
 }
@@ -57,3 +62,43 @@ text-align: center;
     margin: 1vw auto;
     width: 30vw;
 }
+
+@media screen and (max-width: 1100px) {
+    .container-wrapper{
+        margin: 3vw auto;
+        width: 75vw;
+    }
+
+
+}
+
+@media screen and (max-width: 500px) {
+    .error-message {
+        font-size: 8vw;
+    }
+    .container-wrapper{
+        margin: 6em auto;
+        width: 95vw;
+    }
+    .filter-form{
+        flex-direction: column;
+    }
+    .time-select select{
+        width: 49%;
+    }
+    .filter-form select{
+        margin-top: 0.35em;
+    }
+    .first{
+
+        margin-top: 1em;
+        width: 85vw;
+    }
+    .second,.settings{
+        margin-top: 1.5em;
+        width: 85vw;
+    }
+
+
+}
+
