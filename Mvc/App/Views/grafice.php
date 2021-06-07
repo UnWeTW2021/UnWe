@@ -11,6 +11,7 @@
   <?php echo '<title>Grafice ' .  $data . ' feb. 2021</title>'; ?>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
   <script src="Grafice/grafice.js" defer ></script>
+  <script src="Components/header.js" defer ></script>
 </head>
 <body>
 
