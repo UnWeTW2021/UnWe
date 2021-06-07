@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/compare.css">
     <?php include('Components/header-include.php');?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
 </head>
 <body>
@@ -244,6 +244,11 @@ include('Components/header.php');
 
 </section>
 
+<section class="download-buttons">
+    <a href="#" id="pdf-button">Download PDF⬇</a>
+    <a href="#" id="csv-button">Download CSV⬇</a>
+    <a href="#" id="svg-button">Download SVG⬇</a>
+</section>
 
 <section class="container-wrapper">
     <div class="container" id="chart-wrapper">
