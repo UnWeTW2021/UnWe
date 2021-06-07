@@ -112,7 +112,7 @@ class GrupaVarsta{
             $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
             $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
             $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
-            $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
+            $this->Peste_55_ani = $this->Peste_55_ani + $row['peste_55_ani'];
         }
 
     }
@@ -144,7 +144,7 @@ class GrupaVarsta{
                 $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
                 $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
                 $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
-                $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
+                $this->Peste_55_ani = $this->Peste_55_ani + $row['peste_55_ani'];
             }
         }
         else{
@@ -172,7 +172,7 @@ class GrupaVarsta{
             $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
             $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
             $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
-            $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
+            $this->Peste_55_ani = $this->Peste_55_ani + $row['peste_55_ani'];
         }
 
         $query = "SELECT 
@@ -199,7 +199,7 @@ class GrupaVarsta{
             $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
             $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
             $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
-            $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
+            $this->Peste_55_ani = $this->Peste_55_ani + $row['peste_55_ani'];
         }
 
         $query = "SELECT 
@@ -225,7 +225,7 @@ class GrupaVarsta{
             $this->_30_39_ani = $this->_30_39_ani + $row['30_39_ani'];
             $this->_40_49_ani = $this->_40_49_ani + $row['40_49_ani'];
             $this->_50_55_ani = $this->_50_55_ani + $row['50_55_ani'];
-            $this->Peste_55_ani = $this->_50_55_ani + $row['peste_55_ani'];
+            $this->Peste_55_ani = $this->Peste_55_ani + $row['peste_55_ani'];
         }
 
         }   
