@@ -16,7 +16,7 @@ console.log(email.value)
     let emailValue=email.value;
     let passswordValue=password.value;
 
-    postData('http://localhost/UnWe/api/login/login.php', { email: emailValue,password:passswordValue })
+    postData('https://unwe.herokuapp.com/api/login/login.php', { email: emailValue,password:passswordValue })
         .then(data => {
             console.log(data);
            if(data.success===0) {

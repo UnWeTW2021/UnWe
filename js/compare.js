@@ -72,18 +72,20 @@ showText=""
     console.log(dataValue)
     if (dataValue === 1) {
 
-        baseUrl = "http://localhost/UnWe/api/grupa_varsta/"
+
+        baseUrl = "https://unwe.herokuapp.com/api/grupa_varsta/"
         LABELS=grupaVarsta;
     } else if (dataValue === 2) {
-        baseUrl = "http://localhost/UnWe/api/medie_rezidenta/"
+        baseUrl = "https://unwe.herokuapp.com/api/medie_rezidenta/"
         LABELS=medieRezidenta;
 
     } else if (dataValue === 3) {
-        baseUrl = "http://localhost/UnWe/api/nivelul_educatiei/"
+        baseUrl = "https://unwe.herokuapp.com/api/nivelul_educatiei/"
         LABELS=nivelEducatie;
     } else if (dataValue === 4) {
         baseUrl = "http://localhost/UnWe/api/rate_somaj/"
         LABELS=rateSomaj;
+
     } else {
 
         errorMessage.innerText = "Alegeti un dataset!"
