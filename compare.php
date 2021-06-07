@@ -18,6 +18,8 @@
 <?php
 include('Components/header.php');
 ?>
+<section class="page-wrapper">
+
 
 <section class="filter-wrapper">
 
@@ -34,9 +36,9 @@ include('Components/header.php');
                 <option value="Botosani">Botosani</option>
                 <option value="Brasov">Brasov</option>
                 <option value="Braila">Braila</option>
-                <option value="Bucuresti">Bucuresti</option>
+                <option value="Municipiul Bucuresti">Bucuresti</option>
                 <option value="Buzau">Buzau</option>
-                <option value="Caras Severin">Caras Severin</option>
+                <option value="Caras-Severin">Caras Severin</option>
                 <option value="Calarasi">Calarasi</option>
                 <option value="Cluj">Cluj</option>
                 <option value="Constanta">Constanta</option>
@@ -57,7 +59,7 @@ include('Components/header.php');
                 <option value="Neamt">Neamt</option>
                 <option value="Olt">Olt</option>
                 <option value="Prahova">Prahova</option>
-                <option value="Satu Mare">Satu Mare</option>
+                <option value="Satu-Mare">Satu Mare</option>
                 <option value="Salaj">Salaj</option>
                 <option value="Sibiu">Sibiu</option>
                 <option value="Suceava">Suceava</option>
@@ -151,9 +153,9 @@ include('Components/header.php');
                 <option value="Botosani">Botosani</option>
                 <option value="Brasov">Brasov</option>
                 <option value="Braila">Braila</option>
-                <option value="Bucuresti">Bucuresti</option>
+                <option value="Municipiul Bucuresti">Bucuresti</option>
                 <option value="Buzau">Buzau</option>
-                <option value="Caras Severin">Caras Severin</option>
+                <option value="Caras-Severin">Caras Severin</option>
                 <option value="Calarasi">Calarasi</option>
                 <option value="Cluj">Cluj</option>
                 <option value="Constanta">Constanta</option>
@@ -174,7 +176,7 @@ include('Components/header.php');
                 <option value="Neamt">Neamt</option>
                 <option value="Olt">Olt</option>
                 <option value="Prahova">Prahova</option>
-                <option value="Satu Mare">Satu Mare</option>
+                <option value="Satu-Mare">Satu Mare</option>
                 <option value="Salaj">Salaj</option>
                 <option value="Sibiu">Sibiu</option>
                 <option value="Suceava">Suceava</option>
@@ -244,15 +246,13 @@ include('Components/header.php');
 
 
 <section class="container-wrapper">
-    <div class="container">
+    <div class="container" id="chart-wrapper">
         <canvas id="chart1"></canvas>
-        <canvas id="chart2"></canvas>
-        <canvas id="chart3"></canvas>
-        <canvas id="chart4"></canvas>
+
     </div>
 </section>
 
-
+</section>
 <?php
 include('Components/footer.php');
 ?>
