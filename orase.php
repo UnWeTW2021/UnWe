@@ -73,7 +73,7 @@
              </div>
         </a>
 
-        <a href="Mvc/Public/judet/Bucharest">
+        <a href="Mvc/Public/judet/Bucuresti">
             <div class="card">
                 <h3>București</h3>
             </div>
