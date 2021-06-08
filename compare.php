@@ -12,6 +12,7 @@
     <?php include('Components/header-include.php');?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script type="text/javascript" src="js/canvas2svg.js"></script>
 
 </head>
 <body>

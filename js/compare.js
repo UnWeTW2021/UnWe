@@ -246,6 +246,31 @@ async function renderPage(e) {
   renderChart(dataValue, viewValue, data1, data2);
 }
 
+function tweakLib() {
+  C2S.prototype.getContext = function (contextId) {
+    if (contextId == '2d' || contextId == '2D') {
+      return this;
+    }
+    return null;
+  };
+
+  C2S.prototype.style = function () {
+    return this.__canvas.style;
+  };
+
+  C2S.prototype.getAttribute = function (name) {
+    return this[name];
+  };
+
+  C2S.prototype.addEventListener = function (
+    type,
+    listener,
+    eventListenerOptions
+  ) {
+    console.log('canvas2svg.addEventListener() not implemented.');
+  };
+}
+
 function renderChart(dataValue, viewValue, data1, data2) {
   console.warn(dataValue);
 
@@ -280,7 +305,7 @@ function renderChart(dataValue, viewValue, data1, data2) {
   let chart1 = document.createElement('canvas');
   chart1.setAttribute('id', 'chart1');
   chartWrapper.appendChild(chart1);
-  let chart100 = new Chart(chart1, {
+  let chartData = {
     type: viewValue,
     data: {
       labels: LABELS,
@@ -333,7 +358,8 @@ function renderChart(dataValue, viewValue, data1, data2) {
         enabled: true,
       },
     },
-  });
+  };
+  let chart100 = new Chart(chart1, chartData);
 
   let pdfButton = document.getElementById('pdf-button');
   let csvButton = document.getElementById('csv-button');
@@ -350,7 +376,7 @@ function renderChart(dataValue, viewValue, data1, data2) {
     pdfCanvas.setAttribute('height', reportHeight);
 
     let pdfctx = pdfCanvas.getContext('2d');
-    let pdfctxX = 100;
+    let pdfctxX = 0;
     let pdfctxY = 0;
     let buffer = 100;
 
@@ -364,20 +390,29 @@ function renderChart(dataValue, viewValue, data1, data2) {
       canvas.clientHeight
     );
 
-    let pdf = new jsPDF('l', 'pt', [
-      canvas.clientWidth,
-      reportHeight + canvas.clientHeight,
-    ]);
+    let pdf = new jsPDF('l', 'pt', [reportWidth + 300, reportHeight + 300]);
 
     pdfctxY += canvas.clientHeight;
 
     pdf.addImage(pdfCanvas, 'PNG', 10, 0);
 
+    pdfctxYCopy = pdfctxY;
+
     for (key in data1) {
       let value = data1[key];
       if (key !== 'luna' && key !== 'an') {
-        pdf.text(pdfctxX, pdfctxY, key + ' : ' + value);
+        pdf.text(pdfctxX + 10, pdfctxY, key + ' : ' + value);
         pdfctxY += 20;
+      }
+    }
+
+    if (data2['judet'] !== undefined) {
+      for (key in data2) {
+        let value = data2[key];
+        if (key !== 'luna' && key !== 'an') {
+          pdf.text(500, pdfctxYCopy, key + ' : ' + value);
+          pdfctxYCopy += 20;
+        }
       }
     }
 
@@ -388,5 +423,86 @@ function renderChart(dataValue, viewValue, data1, data2) {
     );
   };
 
-  csvButton.onclick = function (event) {};
+  csvButton.onclick = function (event) {
+    let jsonString = [];
+
+    let row = [];
+    for (key in data1) {
+      if (key !== 'luna' && key !== 'an') {
+        row.push(key);
+      }
+    }
+    jsonString.push(row);
+
+    row = [];
+    for (key in data1) {
+      let value = data1[key];
+      if (key !== 'luna' && key !== 'an') {
+        row.push(value);
+      }
+    }
+    jsonString.push(row);
+
+    if (data2['judet'] !== undefined) {
+      row = [];
+      for (key in data2) {
+        let value = data2[key];
+        if (key !== 'luna' && key !== 'an') {
+          row.push(value);
+        }
+      }
+      jsonString.push(row);
+    }
+
+    let csvContent = 'data:text/csv;charset=utf-8,';
+
+    jsonString.forEach(function (rowArray) {
+      let row = rowArray.join(',');
+      csvContent += row + '\r\n';
+    });
+
+    let encodedUri = encodeURI(csvContent);
+    let link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute(
+      'download',
+      data2['judet'] !== undefined
+        ? data1['judet'] + '-' + data2['judet'] + '.csv'
+        : data1['judet'] + '.csv'
+    );
+    document.body.appendChild(link); // Required for FF
+    link.click();
+  };
+
+  svgButton.onclick = function (event) {
+    let context = document.getElementById('chart1').getContext('2d');
+
+    tweakLib();
+    chartData.options.responsive = false;
+    chartData.options.animation = false;
+
+    let svgContext = C2S(1600, 1000);
+    svgContext.width = 800;
+    svgContext.height = 400;
+    // console.log(svgContext);
+    let mySvg = new Chart(svgContext, chartData);
+    // console.log(svgContext.getSvg());
+
+    let dl = document.createElement('a');
+    // document.body.appendChild(dl); // This line makes it work in Firefox.
+    let svg = svgContext.getSvg();
+    if (window.ActiveXObject) {
+      svgString = svg.xml;
+    } else {
+      var oSerializer = new XMLSerializer();
+      svgString = oSerializer.serializeToString(svg);
+    }
+    dl.download =
+      data2['judet'] !== undefined
+        ? data1['judet'] + '-' + data2['judet'] + '.svg'
+        : data1['judet'] + '.svg';
+    //   return "data:image/svg+xml," + encodeURIComponent(svgAsXML);
+    dl.href = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString);
+    dl.click();
+  };
 }
