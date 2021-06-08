@@ -4,6 +4,7 @@
   margin: 0;
 }
 
+
 .card {
   background-color: #fff;
   color: #333;
@@ -13,11 +14,17 @@
   margin: 10px;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+ 
 .flex {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
 }
 
 h1 {
