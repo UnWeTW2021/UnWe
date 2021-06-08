@@ -16,7 +16,7 @@ var simplemaps_countrymap_mapdata = {
         all_states_zoomable: "no",
 
         //Location defaults
-        location_description: "Location description",
+        location_description: "",
         location_url: "",
         location_color: "#FF0067",
         location_opacity: 0.8,
@@ -98,9 +98,9 @@ var simplemaps_countrymap_mapdata = {
             url: "Mvc/Public/judet/Teleorman"
         },
         ROU128: {
-            name: "Bucharest",
+            name: "Bucuresti",
             color: "#b8da9d",
-            url: "Mvc/Public/judet/Bucharest"
+            url: "Mvc/Public/judet/Bucuresti"
         },
         ROU129: {
             name: "Calarasi",
