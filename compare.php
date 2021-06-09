@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="css/compare.css">
     <?php include('Components/header-include.php');?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script type="text/javascript" src="js/canvas2svg.js"></script>
 
 </head>
 <body>
@@ -32,11 +33,11 @@ include('Components/header.php');
                 <option value="Arges">Arges</option>
                 <option value="Bacau">Bacau</option>
                 <option value="Bihor">Bihor</option>
-                <option value="Bistrita Nasaud">Bistrita Nasaud</option>
+                <option value="Bistrita-Nasaud">Bistrita Nasaud</option>
                 <option value="Botosani">Botosani</option>
                 <option value="Brasov">Brasov</option>
                 <option value="Braila">Braila</option>
-                <option value="Municipiul Bucuresti">Bucuresti</option>
+                <option value="Bucuresti">Bucuresti</option>
                 <option value="Buzau">Buzau</option>
                 <option value="Caras-Severin">Caras Severin</option>
                 <option value="Calarasi">Calarasi</option>
@@ -149,11 +150,11 @@ include('Components/header.php');
                 <option value="Arges">Arges</option>
                 <option value="Bacau">Bacau</option>
                 <option value="Bihor">Bihor</option>
-                <option value="Bistrita Nasaud">Bistrita Nasaud</option>
+                <option value="Bistrita-Nasaud">Bistrita Nasaud</option>
                 <option value="Botosani">Botosani</option>
                 <option value="Brasov">Brasov</option>
                 <option value="Braila">Braila</option>
-                <option value="Municipiul Bucuresti">Bucuresti</option>
+                <option value="Bucuresti">Bucuresti</option>
                 <option value="Buzau">Buzau</option>
                 <option value="Caras-Severin">Caras Severin</option>
                 <option value="Calarasi">Calarasi</option>
@@ -244,6 +245,11 @@ include('Components/header.php');
 
 </section>
 
+<section class="download-buttons">
+    <a href="#" id="pdf-button">Download PDF⬇</a>
+    <a href="#" id="csv-button">Download CSV⬇</a>
+    <a href="#" id="svg-button">Download SVG⬇</a>
+</section>
 
 <section class="container-wrapper">
     <div class="container" id="chart-wrapper">
