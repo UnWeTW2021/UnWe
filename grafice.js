@@ -13,7 +13,7 @@ async function generateSomeriSex() {
   // console.log(judet);
 
   let callUrl = new URL(
-    'http://localhost/UnWe/api/medie_rezidenta/read_one.php'
+    'https://unwe.herokuapp.com/api/medie_rezidenta/read_one.php'
   );
   let search_params = callUrl.searchParams;
   search_params.set('judet', judet);
@@ -83,7 +83,7 @@ async function generateSomeriIndemnizati() {
   // console.log(judet);
 
   let callUrl = new URL(
-    'http://localhost/UnWe/api/rate_somaj/read_one.php'
+    'https://unwe.herokuapp.com/api/rate_somaj/read_one.php'
   );
   let search_params = callUrl.searchParams;
   search_params.set('judet', judet);
@@ -154,7 +154,7 @@ async function generateMediuUrban() {
   // console.log(judet);
 
   let callUrl = new URL(
-    'http://localhost/UnWe/api/medie_rezidenta/read_one.php'
+    'https://unwe.herokuapp.com/api/medie_rezidenta/read_one.php'
   );
   let search_params = callUrl.searchParams;
   search_params.set('judet', judet);
@@ -224,7 +224,7 @@ async function generateMediuRural() {
   // console.log(judet);
 
   let callUrl = new URL(
-    'http://localhost/UnWe/api/medie_rezidenta/read_one.php'
+    'https://unwe.herokuapp.com/api/medie_rezidenta/read_one.php'
   );
   let search_params = callUrl.searchParams;
   search_params.set('judet', judet);
@@ -295,7 +295,7 @@ async function generateNivelEducatie() {
   // console.log(judet);
 
   let callUrl = new URL(
-    'http://localhost/UnWe/api/nivelul_educatiei/read_one.php'
+    'https://unwe.herokuapp.com/api/nivelul_educatiei/read_one.php'
   );
   let search_params = callUrl.searchParams;
   search_params.set('judet', judet);
@@ -382,7 +382,7 @@ async function generateVarsta() {
   // console.log(judet);
 
   let callUrl = new URL(
-    'http://localhost/UnWe/api/grupa_varsta/read_one.php'
+    'https://unwe.herokuapp.com/api/grupa_varsta/read_one.php'
   );
   let search_params = callUrl.searchParams;
   search_params.set('judet', judet);
