@@ -392,11 +392,11 @@ function renderChart(dataValue, viewValue, data1, data2) {
     let canvas = document.getElementById('chart1');
 
     pdfctx.drawImage(
-      canvas,
-      pdfctxX,
-      pdfctxY,
-      canvas.clientWidth,
-      canvas.clientHeight
+        canvas,
+        pdfctxX,
+        pdfctxY,
+        canvas.clientWidth,
+        canvas.clientHeight
     );
 
     let pdf = new jsPDF('l', 'pt', [reportWidth + 300, reportHeight + 300]);
@@ -426,9 +426,9 @@ function renderChart(dataValue, viewValue, data1, data2) {
     }
 
     pdf.save(
-      data2['judet'] !== undefined
-        ? data1['judet'] + '-' + data2['judet'] + '.pdf'
-        : data1['judet'] + '.pdf'
+        data2['judet'] !== undefined
+            ? data1['judet'] + '-' + data2['judet'] + '.pdf'
+            : data1['judet'] + '.pdf'
     );
   };
 
@@ -474,10 +474,10 @@ function renderChart(dataValue, viewValue, data1, data2) {
     let link = document.createElement('a');
     link.setAttribute('href', encodedUri);
     link.setAttribute(
-      'download',
-      data2['judet'] !== undefined
-        ? data1['judet'] + '-' + data2['judet'] + '.csv'
-        : data1['judet'] + '.csv'
+        'download',
+        data2['judet'] !== undefined
+            ? data1['judet'] + '-' + data2['judet'] + '.csv'
+            : data1['judet'] + '.csv'
     );
     document.body.appendChild(link); // Required for FF
     link.click();
@@ -507,9 +507,9 @@ function renderChart(dataValue, viewValue, data1, data2) {
       svgString = oSerializer.serializeToString(svg);
     }
     dl.download =
-      data2['judet'] !== undefined
-        ? data1['judet'] + '-' + data2['judet'] + '.svg'
-        : data1['judet'] + '.svg';
+        data2['judet'] !== undefined
+            ? data1['judet'] + '-' + data2['judet'] + '.svg'
+            : data1['judet'] + '.svg';
     //   return "data:image/svg+xml," + encodeURIComponent(svgAsXML);
     dl.href = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString);
     dl.click();
