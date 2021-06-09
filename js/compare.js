@@ -64,9 +64,7 @@ var data1, data2;
 let apiUrl = '';
 let baseUrl = '';
 
-Chart.defaults.global.defaultFontFamily = 'Tahoma';
-Chart.defaults.global.defaultFontSize = 12;
-Chart.defaults.global.defaultFontColor = '#777';
+
 
 [...selects].forEach((item) => {
   item.addEventListener('change', (event) => {
@@ -207,7 +205,7 @@ async function renderPage(e) {
     city2Value !== ''
   ) {
     showText = city2.value;
-    console.error('primul if');
+    console.log('primul if');
     apiUrl = baseUrl + 'read_one.php';
     url1 = new URL(apiUrl);
     search_params1 = url1.searchParams;
@@ -226,7 +224,7 @@ async function renderPage(e) {
     year4Value !== ''
   ) {
     showText = city2.value;
-    console.error('2 if');
+    console.log('2 if');
     apiUrl = baseUrl + 'read_luna.php';
     url1 = new URL(apiUrl);
     search_params1 = url1.searchParams;
