@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/compare.css">
     <?php include('Components/header-include.php');?>
+    <link rel=preconnect>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js" async></script>
     <script type="text/javascript" src="js/canvas2svg.js" async></script>
