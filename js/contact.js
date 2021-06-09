@@ -13,7 +13,7 @@ var marker = L.marker([47.157179425453954, 27.587091255892698]).addTo(mymap);
 marker.bindPopup("<h1>UnWe</h1>").openPopup();
 
 
-let url=new URL("http://localhost/UnWe/contact_mail.php")
+let url=new URL("https://unwe.herokuapp.com/contact_mail.php")
 let errorMessage=document.getElementById('error-message')
 let contactForm=document.getElementById('contact-form');
 
