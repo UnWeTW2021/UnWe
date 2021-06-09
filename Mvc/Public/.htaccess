@@ -1,17 +1,27 @@
-Options -Multiviews 
-RewriteEngine On
 
+RewriteEngine on
 RewriteBase /Mvc/Public/
 
-RewriteCond %{REQUEST_FILENAME} !-f !https
-RewriteCond %{REQUEST_FILENAME} !-d !https
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 
+RewriteRule ^(.*)$ index.php
 
-RewriteRule ^(.+)$ Mvc.php?url=$1 [QSA,L]
-#SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
-#SetEnvIf Authorization “(.*)” HTTP_AUTHORIZATION=$1
-
-
-RewriteEngine On
-RewriteCond %{HTTP:Authorization} ^(.+)$
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+#
+#Options -Multiviews
+#RewriteEngine On
+#
+#RewriteBase /Mvc/Public/
+#
+#RewriteCond %{REQUEST_FILENAME} !-f !https
+#RewriteCond %{REQUEST_FILENAME} !-d !https
+#
+#
+#RewriteRule ^(.+)$ Mvc.php?url=$1 [QSA,L]
+##SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
+##SetEnvIf Authorization “(.*)” HTTP_AUTHORIZATION=$1
+#
+#
+#RewriteEngine On
+#RewriteCond %{HTTP:Authorization} ^(.+)$
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
