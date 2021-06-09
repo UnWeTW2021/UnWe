@@ -28,6 +28,17 @@ async function getapi(url) {
     return data;
 
 }
+async function getapi2(url) {
+
+
+    const response = await fetch(url);
+
+
+    var data = await response ;
+
+    return data;
+
+}
 
 async function deleteData(url = '', data = {}) {
     // Default options are marked with *
@@ -48,4 +59,4 @@ async function deleteData(url = '', data = {}) {
 }
 
 
-export { postData ,getapi,deleteData};
+export { postData ,getapi,deleteData,getapi2};
