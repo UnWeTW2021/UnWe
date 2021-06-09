@@ -64,10 +64,6 @@ var data1, data2;
 let apiUrl = '';
 let baseUrl = '';
 
-Chart.defaults.global.defaultFontFamily = 'Tahoma';
-Chart.defaults.global.defaultFontSize = 12;
-Chart.defaults.global.defaultFontColor = '#777';
-
 [...selects].forEach((item) => {
   item.addEventListener('change', (event) => {
     renderPage(event);
@@ -207,7 +203,7 @@ async function renderPage(e) {
     city2Value !== ''
   ) {
     showText = city2.value;
-    console.error('primul if');
+    console.log('primul if');
     apiUrl = baseUrl + 'read_one.php';
     url1 = new URL(apiUrl);
     search_params1 = url1.searchParams;
@@ -226,7 +222,7 @@ async function renderPage(e) {
     year4Value !== ''
   ) {
     showText = city2.value;
-    console.error('2 if');
+    console.log('2 if');
     apiUrl = baseUrl + 'read_luna.php';
     url1 = new URL(apiUrl);
     search_params1 = url1.searchParams;
@@ -304,14 +300,12 @@ function renderChart(dataValue, viewValue, data1, data2) {
     random: 'rgb(113, 50, 155)',
     random2: 'rgb(193, 99, 195)',
     grey: 'rgb(231,233,237)',
-
-
   };
   let chart1 = document.createElement('canvas');
   chart1.setAttribute('id', 'chart1');
   chartWrapper.appendChild(chart1);
-  console.log("INTERIOR RENDER")
-  console.log(showText)
+  console.log('INTERIOR RENDER');
+  console.log(showText);
   let chartData = {
     type: viewValue,
     data: {
@@ -321,7 +315,10 @@ function renderChart(dataValue, viewValue, data1, data2) {
           label: city1.value,
           data: newData1,
           fill: false,
-          backgroundColor: viewValue === 'doughnut'? Object.values(chartColors): chartColors.red,
+          backgroundColor:
+            viewValue === 'doughnut'
+              ? Object.values(chartColors)
+              : chartColors.red,
           borderWidth: 1,
           borderColor: '#777',
           hoverBorderWidth: 2,
@@ -331,7 +328,10 @@ function renderChart(dataValue, viewValue, data1, data2) {
           label: city2.value,
           data: newData2,
           fill: false,
-          backgroundColor: viewValue === 'doughnut'? Object.values(chartColors): chartColors.blue,
+          backgroundColor:
+            viewValue === 'doughnut'
+              ? Object.values(chartColors)
+              : chartColors.blue,
           borderWidth: 1,
           borderColor: '#3B729F',
           hoverBorderWidth: 2,
@@ -342,7 +342,8 @@ function renderChart(dataValue, viewValue, data1, data2) {
     options: {
       title: {
         display: true,
-        text: showText !== '' ? city1.value + ' vs ' + city2.value : city1.value,
+        text:
+          showText !== '' ? city1.value + ' vs ' + city2.value : city1.value,
         fontSize: 18,
       },
       legend: {
@@ -365,8 +366,6 @@ function renderChart(dataValue, viewValue, data1, data2) {
       },
     },
   };
-
-
 
   let chart100 = new Chart(chart1, chartData);
 
@@ -392,11 +391,11 @@ function renderChart(dataValue, viewValue, data1, data2) {
     let canvas = document.getElementById('chart1');
 
     pdfctx.drawImage(
-        canvas,
-        pdfctxX,
-        pdfctxY,
-        canvas.clientWidth,
-        canvas.clientHeight
+      canvas,
+      pdfctxX,
+      pdfctxY,
+      canvas.clientWidth,
+      canvas.clientHeight
     );
 
     let pdf = new jsPDF('l', 'pt', [reportWidth + 300, reportHeight + 300]);
@@ -426,9 +425,9 @@ function renderChart(dataValue, viewValue, data1, data2) {
     }
 
     pdf.save(
-        data2['judet'] !== undefined
-            ? data1['judet'] + '-' + data2['judet'] + '.pdf'
-            : data1['judet'] + '.pdf'
+      data2['judet'] !== undefined
+        ? data1['judet'] + '-' + data2['judet'] + '.pdf'
+        : data1['judet'] + '.pdf'
     );
   };
 
@@ -474,10 +473,10 @@ function renderChart(dataValue, viewValue, data1, data2) {
     let link = document.createElement('a');
     link.setAttribute('href', encodedUri);
     link.setAttribute(
-        'download',
-        data2['judet'] !== undefined
-            ? data1['judet'] + '-' + data2['judet'] + '.csv'
-            : data1['judet'] + '.csv'
+      'download',
+      data2['judet'] !== undefined
+        ? data1['judet'] + '-' + data2['judet'] + '.csv'
+        : data1['judet'] + '.csv'
     );
     document.body.appendChild(link); // Required for FF
     link.click();
@@ -507,9 +506,9 @@ function renderChart(dataValue, viewValue, data1, data2) {
       svgString = oSerializer.serializeToString(svg);
     }
     dl.download =
-        data2['judet'] !== undefined
-            ? data1['judet'] + '-' + data2['judet'] + '.svg'
-            : data1['judet'] + '.svg';
+      data2['judet'] !== undefined
+        ? data1['judet'] + '-' + data2['judet'] + '.svg'
+        : data1['judet'] + '.svg';
     //   return "data:image/svg+xml," + encodeURIComponent(svgAsXML);
     dl.href = 'data:image/svg+xml;utf8,' + encodeURIComponent(svgString);
     dl.click();
