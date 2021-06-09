@@ -83,71 +83,43 @@ async function getapi(url) {
 }
 
 async function renderPage(e) {
-  showText = '';
-  let city1Value = city1.value;
-  let city2Value = city2.value;
 
-  let month1Value = month1.value;
-  let year1Value = year1.value;
-  let year2Value = year2.value;
-  let month2Value = month2.value;
-  let year3Value = year3.value;
-  let month3Value = month3.value;
-  let year4Value = year4.value;
-  let month4Value = month4.value;
-  let viewValue = view.value;
-  let dataValue = parseInt(data.value);
-  console.log(dataValue);
-  if (dataValue === 1) {
-    baseUrl = 'http://localhost/UnWe/api/grupa_varsta/';
-    LABELS = grupaVarsta;
-  } else if (dataValue === 2) {
-    baseUrl = 'http://localhost/UnWe/api/medie_rezidenta/';
-    LABELS = medieRezidenta;
-  } else if (dataValue === 3) {
-    baseUrl = 'http://localhost/UnWe/api/nivelul_educatiei/';
-    LABELS = nivelEducatie;
-  } else if (dataValue === 4) {
-    baseUrl = 'http://localhost/UnWe/api/rate_somaj/';
-    LABELS = rateSomaj;
-  } else {
-    errorMessage.innerText = 'Alegeti un dataset!';
-    return;
-  }
+showText=""
+    let city1Value = city1.value;
+    let city2Value = city2.value;
 
-  if (viewValue === '') {
-    errorMessage.innerText = 'Alegeti un tip de view!';
-    return;
-  }
-  apiUrl = baseUrl + 'read_one.php';
-  var url = new URL(apiUrl);
-  var search_params = url.searchParams;
-  if (city1Value === '') {
-    errorMessage.innerText = 'Selecteaza macar un oras';
-    return;
-  } else {
-    errorMessage.innerText = '';
-    search_params.set('judet', city1Value);
-  }
+    let month1Value = month1.value;
+    let year1Value = year1.value;
+    let year2Value = year2.value;
+    let month2Value = month2.value;
+    let year3Value = year3.value;
+    let month3Value = month3.value;
+    let year4Value = year4.value;
+    let month4Value = month4.value;
+    let viewValue = view.value;
+    let dataValue = parseInt(data.value);
+    console.log(dataValue)
+    if (dataValue === 1) {
 
-  if (month1Value === '') {
-  } else {
-    apiUrl = baseUrl + 'read_luna.php';
-    url = new URL(apiUrl);
-    search_params = url.searchParams;
-    search_params.set('judet', city1Value);
-    errorMessage.innerText = '';
-    search_params.set('luna1', month1Value);
-  }
-  if (month2Value !== '' && year1Value !== '' && year2Value !== '') {
-    search_params.set('an1', year1Value);
-    search_params.set('luna2', month2Value);
-    search_params.set('an2', year2Value);
-    errorMessage.innerText = '';
-  } else {
-    if (month1Value !== '') {
-      errorMessage.innerText = 'Alegeti un interval corect';
-      return;
+
+        baseUrl = "https://unwe.herokuapp.com/api/grupa_varsta/"
+        LABELS=grupaVarsta;
+    } else if (dataValue === 2) {
+        baseUrl = "https://unwe.herokuapp.com/api/medie_rezidenta/"
+        LABELS=medieRezidenta;
+
+    } else if (dataValue === 3) {
+        baseUrl = "https://unwe.herokuapp.com/api/nivelul_educatiei/"
+        LABELS=nivelEducatie;
+    } else if (dataValue === 4) {
+        baseUrl = "http://localhost/UnWe/api/rate_somaj/"
+        LABELS=rateSomaj;
+
+    } else {
+
+        errorMessage.innerText = "Alegeti un dataset!"
+        return
+
     }
   }
 
