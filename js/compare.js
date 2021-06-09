@@ -206,6 +206,7 @@ async function renderPage(e) {
     year2Value === '' &&
     city2Value !== ''
   ) {
+    showText = city2.value;
     console.error('primul if');
     apiUrl = baseUrl + 'read_one.php';
     url1 = new URL(apiUrl);
@@ -224,7 +225,7 @@ async function renderPage(e) {
     year3Value !== '' &&
     year4Value !== ''
   ) {
-    showText = city2Value;
+    showText = city2.value;
     console.error('2 if');
     apiUrl = baseUrl + 'read_luna.php';
     url1 = new URL(apiUrl);
@@ -305,15 +306,17 @@ function renderChart(dataValue, viewValue, data1, data2) {
   let chart1 = document.createElement('canvas');
   chart1.setAttribute('id', 'chart1');
   chartWrapper.appendChild(chart1);
+  console.log("INTERIOR RENDER")
+  console.log(showText)
   let chartData = {
     type: viewValue,
     data: {
       labels: LABELS,
       datasets: [
         {
-          label: 'Șomeri',
+          label: city1.value,
           data: newData1,
-
+          fill: false,
           backgroundColor: chartColors.red,
           borderWidth: 1,
           borderColor: '#777',
@@ -321,9 +324,9 @@ function renderChart(dataValue, viewValue, data1, data2) {
           hoverBorderColor: '#000',
         },
         {
-          label: 'Șomeri',
+          label: city2.value,
           data: newData2,
-
+          fill: false,
           backgroundColor: chartColors.blue,
           borderWidth: 1,
           borderColor: '#3B729F',
@@ -335,12 +338,11 @@ function renderChart(dataValue, viewValue, data1, data2) {
     options: {
       title: {
         display: true,
-        text:
-          showText !== '' ? city1.value + ' vs ' + city2.value : city1.value,
+        text: showText !== '' ? city1.value + ' vs ' + city2.value : city1.value,
         fontSize: 18,
       },
       legend: {
-        display: false,
+        display: true,
         position: 'right',
         labels: {
           fontColor: '#000',
@@ -359,6 +361,9 @@ function renderChart(dataValue, viewValue, data1, data2) {
       },
     },
   };
+
+
+
   let chart100 = new Chart(chart1, chartData);
 
   let pdfButton = document.getElementById('pdf-button');
