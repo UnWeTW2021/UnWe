@@ -82,9 +82,7 @@ async function generateSomeriIndemnizati() {
   judet = judet.innerText;
   // console.log(judet);
 
-  let callUrl = new URL(
-    'http://localhost/UnWe/api/rate_somaj/read_one.php'
-  );
+  let callUrl = new URL('http://localhost/UnWe/api/rate_somaj/read_one.php');
   let search_params = callUrl.searchParams;
   search_params.set('judet', judet);
   callUrl.search = search_params.toString();
@@ -260,7 +258,7 @@ async function generateMediuRural() {
     options: {
       title: {
         display: true,
-        text: 'Șomeri Iași feb. 2021 - Mediu Rural',
+        text: 'Șomeri - Mediu Rural',
         fontSize: 18,
       },
       legend: {
@@ -347,7 +345,7 @@ async function generateNivelEducatie() {
     options: {
       title: {
         display: true,
-        text: 'Șomeri Iași feb. 2021 - Nivel Educație',
+        text: 'Șomeri - Nivel Educație',
         fontSize: 18,
       },
       legend: {
@@ -381,9 +379,7 @@ async function generateVarsta() {
   judet = judet.innerText;
   // console.log(judet);
 
-  let callUrl = new URL(
-    'http://localhost/UnWe/api/grupa_varsta/read_one.php'
-  );
+  let callUrl = new URL('http://localhost/UnWe/api/grupa_varsta/read_one.php');
   let search_params = callUrl.searchParams;
   search_params.set('judet', judet);
   callUrl.search = search_params.toString();
@@ -424,7 +420,7 @@ async function generateVarsta() {
     options: {
       title: {
         display: true,
-        text: 'Șomeri Iași feb. 2021 - Vârste',
+        text: 'Șomeri - Vârste',
         fontSize: 18,
       },
       legend: {
