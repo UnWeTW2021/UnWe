@@ -54,6 +54,7 @@ prevBtn.addEventListener('click',event=>{
 })
 nextBtn.addEventListener('click',event=>{
 console.log(page,"actuialpage")
+    console.log(results,number,page)
    if(results/number>page-1) {
        console.log(results,"oldres")
        page = page + 1;
@@ -174,7 +175,7 @@ newTable.classList.add("grupa")
         if(data1!=="")
         {
 
-
+            results=data1.results;
 
             console.warn("aici2")
             console.log(data1)
@@ -232,7 +233,7 @@ newTable.classList.add("grupa")
         if(data1!=="")
         {
 
-
+            results=data1.results;
 
             console.warn("aici2")
             console.log(data1)
@@ -289,7 +290,7 @@ newTable.classList.add("grupa")
         {
 
 
-
+            results=data1.results;
             console.warn("aici2")
             console.log(data1)
             // console.warn(data1.nivel_educatie.length)
