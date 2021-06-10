@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Proiect Tehnologii Web</title>
+    <link rel="stylesheet" href="css/scholarly.min.css">
+    <script src="js/scholarly.min.js"></script>
+  </head>
+  <body prefix="schema: http://schema.org">
+    <header>
+      <div class="banner">
+        <img src="scholarly-html.svg" width="227" height="50" alt="Scholarly HTML logo">
+        <div class="status">Scholarly HTML</div>
+      </div>
+      <h1>Proiect Tehnologii Web</h1>
+    </header>
+    
+    <div role="contentinfo">
+      <dl>
+        <dt>Autori</dt>
+        <dd>
+          Borcilă Andrei-Ionuț &amp Dănilă Ana-Maria &amp Harip Alexandru-Gabriel
+        </dd>
+        <dt>Opensource template</dt>
+        <dd>
+          <a href="https://github.com/w3c/scholarly-html">https://github.com/w3c/scholarly-html</a>
+        </dd>
+        <dt>Discussion Group</dt>
+        <dd>
+          The <a href="https://www.w3.org/community/scholarlyhtml/">Scholarly HTML Community
+          Group</a> at <a href="https://w3.org/">W3C</a>
+          (<a href="https://lists.w3.org/Archives/Public/public-scholarlyhtml/">email archives</a>)
+        </dd>
+        <dt>License</dt>
+        <dd>
+          <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>
+        </dd>
+      </dl>
+    </div>
+    <section typeof="sa:Abstract" id="cerinta-problemei" role="doc-abstract">
+      <h2>Cerința problemei</h2>
+      <p>
+        Recurgând la un API REST/GraphQL propriu, să se realizeze un instrument Web de vizualizare și de comparare multi-criteriala 
+        (pe județe, nivel de educație, grupe de vârstă, mediu, perioadă de timp etc.) a datelor publice referitoare la șomajul din România 
+        pe ultimele N luni (minim 12).
+        Statisticile, plus vizualizările generate – minim 3 maniere, plus cele cartografice 
+        pe baza unor servicii Web de profil – vor putea fi exportate in formatele CSV, SVG si PDF.
+      </p>
+      <section id="scop-proiect" role="scop">
+          <h2>Scopul proiectului</h2>
+        <p>
+          Prin acest proiect am început să lucram la o aplicație Web destinată persoanelor
+          interesate de statisticile șomajului din România. Ne-am propus să realizăm acest instrument de vizualizare
+          de date cât mai intuitiv și user-friendly pentru a putea fi folosit atât de persoane care utilizează zilnic tehnologia, cât
+          și pentru persoanele care nu folosec. Statisticile sunt reprezentate sub formă de grafice, pentru a oferi o vizualizare
+          cât mai simplă a datelor dintr-un anumit județ, într-o anumită lună sau pe o perioadă mai îndelungată.  
+
+
+        </p>
+      </section>
+
+      <section id="functionalitati-principale" role="functionalitati">
+          <h2>Funcționalități principale</h2>
+          <ul>
+              <li>Listarea orașelor;</li>
+              <li>Generare diagrame pe bază de criterii diferite (pe județe, nivel de educație, grupe de vârstă, mediu, perioadă de timp etc.);</li>
+              <li>Gernerare diagrame pe perioade de timp diferite;</li>
+              <li>Comparare date pe baza de criterii diferite (pe județe, nivel de educație, grupe de vârstă, mediu, perioadă de timp etc.);</li>
+              <li>Generare grafic comparare a două județe;</li>
+              <li>Exportarea datelor aferente diagramelor, însoțite de statistici;</li>
+              <li>Administratorii au acces la baza de date, putând să o modifice (insert, delete date);</li>
+          </ul>
+      </section>
+
+      <section id="conventii">
+          <h2>Convențiile documentului</h2>
+              <p>
+                Convenția de bază a realizării acestui document constă în utilizarea template-ului 
+                Scholarly HTML, urmând ca puncte ce trebuie abordate (Software Requirements Specification) lista disponibilă
+                pe acest <a href="https://github.com/rick4470/IEEE-SRS-Tempate?fbclid=IwAR3DgZOEpScyMDtnVBVfo7v6JuzWbCvIgwSqwSkSDSoeVX7pyryxuYRBigY#revision-history">link</a>.
+              </p>
+      </section>
+
+
+  
+      <section id="domeniu">
+        <h2>Domeniul de aplicare al produsului</h2>
+          <p>
+          Instrumentul Web UnWe de vizualizare și de comparare multi-criteriala a datelor 
+          publice referitoare la șomajul din România are drept scop principal prezentarea statisticilor 
+          de pe site-ul DATA.GOV.RO într-o manieră cât mai ușoară de înțeles, pe bază de grafice de multiple feluri
+          însoțite de statisticile aferente.
+          Unul dintre marile avantaje ale acestei aplicații constă în eficiența filtrării datelor referotoare la șomaj și a reducerii timpului de căutare de care
+          are parte utilizatorul,întrucât acesta își poate alege criteriile pe care și le dorește pentru statisticile pe care vrea să le vadă.
+
+          </p>
+
+      </section>
+
+    </section>
+
+    <section typeof="sa:Abstract" id="diagrama-uml" role="doc-abstract">
+      <h2>Diagrama UML</h2>
+      <img src="img/diagTW.png" alt="diag" width="600" height="500">
+
+      </section>
+
+    <section id="structura">
+      <h2>Structură</h2>
+      <section id="tipuri-utilizatori">
+        <h3>Tipuri de utilizatori</h3>
+        <p>Utilizatorii se împart în două tipuri principale:
+          <ul>
+            <img src="img/header1.jpg" alt="header" width="800" height="60"> 
+            <li>Utilizatori normali, care nu au nevoie de cont pentru a accesa aplicația.
+              Pot vedea și descărca grafice pe care le doresc. Funcționalități la care au acces userii sunt următoarele:
+              pot vedea și accesa lista de județe și graficele aferente acestora, pot compara două județe în funcție de un anumit
+              criteriu ales de ei și pot salva acea comparare (grafic + statistici) în unul din formatele PDF, SVG, CSV.
+              De asemenea, pot accesa și paginile Despre noi și Contact în cazul în care doresc să lase un anume mesaj.
+            </li>
+            <img src="img/header2.jpg" alt="header" width="800" height="50"> 
+            <li>
+              Administratori care pe lângă toate funcțiile pe care le are un utilizator obișnuit mai poate
+              aduce modificări în baza de date accesând pagina denumită Admin. Acesta poate adăuga noi informații sau are, de asemenea, posibilitatea
+              de a șterge din informațiile deja existente în baza de date. Administrtorii sunt predefiniți, adică nu există posibilitatea
+              de a crea cont care să aibă drepturi de administrator. Detaliie despre conturile lor sunt reținute în baza
+              de date în tabelul denumit users1.
+            </li>
+          </ul>
+          
+        
+        </p>
+      </section>
+      <section id="pagina-principala">
+       
+        <h3>Pagina principală </h3>
+        
+          <ul>
+            <li>
+             Elementul principal pe care îl vede prima dată un utilizator când intră în aplicație este harta României (<a href="https://simplemaps.com/resources/svg-ro">sursa</a>). 
+            </li>
+            <li>
+              Județele cu o rată a șomajului mare sunt colorate cu roșu, cele cu o rată mică sunt colorate cu verde, 
+              iar celelalte intră în categoria de șomaj mediu.
+            </li>
+            <li>
+              Când utilizatorul aplicației urmează să selecteze un județ, în timpul mișcarii mouse-ului peste hartă, pentru
+              a vedea exact ce județ este selectat acesta se colorează în albastru.
+            </li>
+            <li>
+              Când utilizatorul dă click pe un județ, este redirecționat către pagina acelui județ unde sunt afișate toate graficile aferente.
+            </li>
+            <li>Userul are posibilitatea de a mări sau micșora harta, în funcție de preferințele sale, dacă dorește
+              să vizioneze o anumită porțiune. 
+            </li>
+          </ul>
+
+        <img src="img/orase1.jpg" alt="pagPrin1" width="800" height="400">
+      </section>
+
+      <section id="Orase">
+        
+        <h3>Orașe</h3>
+        <ul>
+          <li>
+            Primul buton din header conduce la prima pagină pe care un utilizator o are la dispoziție.
+          </li>
+          <li>
+            Pagina cuprinde o listă a tuturor județelor din România, aranjate în ordine alfabetică. Desfășurarea orașelor astfel
+            în acest mod este una intuitivă și pagina devine ușor de înțeles și de folosit de către useri. 
+          </li>
+          <li>
+            Un utilizator care accesează pagina poate alege statisticile cărui județ dorește să le 
+            vizualizeze reprezentate sub formă grafică.
+          </li>
+          <li>
+            Când utilizatorul apasă pe un numele unui județ acesta este redirecționat către pagina în care 
+            sunt afișate grafice corespunzătoare județului ales. 
+          </li>
+        </ul>
+        <img src="img/listaorase1.jpg" alt="orase" width="800" height="400">
+        
+
+      </section>
+      <section id="grafice">
+       
+        <h3>Pagina cu grafice</h3>
+        <ul>
+          <li>
+           În această pagină sunt reprezentate graficele județului selectat de un utilizator. Pentru județul ales
+           sunt afișate graficele pe baza criteriilor următoare: nivel de educație, grupe de vârstă, mediu, sex, îndemnizare.
+          </li>
+          <li>
+            Graficele pot fi vizualizate toate dând scroll în pagină. 
+          </li>
+          <li>
+            Graficele sunt realizate utilizând libraria <a href="https://www.chartjs.org/">Chart.js</a>.
+          </li>
+        
+        </ul>
+        <img src="img/graf2.jpg" alt="garf1" width="800" height="400">
+       
+      </section>
+      <section id="contact"> 
+        <h3>Pagina de contact</h3>
+        <p>
+         Userii aplicației pot vedea pe această pagină informații referitoare la
+        </p>
+          <ul>
+            <li>
+              o scurtă descriere a proiectului
+            </li>
+            <li>
+              o hartă, pentru a fi cunoscută locația/sediul echipei
+            </li>
+            <li>
+              un 
+              formular prin care un utilizator poate trimite e-mail, în cazul în care are nevoie de un răspuns 
+              din partea echipei, are întrebari sau sugestii, etc. (Formularul este funcțional dacă Xampp este configurat optim)
+            </li>
+          </ul>
+        <img src="img/contact2.jpg" alt="cont2" width="800" height="400">
+
+        <img src="img/contact1.jpg" alt="cont1" width="800" height="400">
+        
+        
+        
+      </section>
+      <section id="despre-noi">
+      
+        <h3>Despre noi</h3>
+        <p>
+          Fiecare dintre cei trei membri ai echipe are:
+        </p>
+        <ul>
+          <li>
+            un card cu poza sa
+          </li>
+          <li>
+            link-urile către rețelele social media
+          </li>
+          <li>
+            o scurtă descriere
+          </li>
+        </ul>
+        <img src="img/desprenoi.jpg" alt="desprenoi" width="800" height="400">
+     
+      </section>
+      <section id="comparator">
+         <h3>Comparator</h3>
+
+         <ul>
+           <li>
+             Dacă un utilizator dorește să vadă graficele și statisticile a două județe în paralel pentru a putea
+             realiza o comparare a datelor acestora, atunci accesând pagina Comparator poate realiza acest lucru.
+           </li>
+           <li>
+             Utilizatorul are mai multe opțiuni din care poate alege realizarea comparării. Poate selecta ce 
+             județe vrea sa compare, pe ce perioade de timp, pe ce criteriu să se realizeze compararea și formatul 
+             graficului pe care îl dorește.
+           </li>
+           <li>
+             Userul, după ce a ales criteriile pe baza cărora vrea să compare județele, poate descărca graficul însoțit 
+             de statistici în 3 formate: PDF, SVG, CSV.
+           </li>
+         </ul>
+         <img src="img/comparator.jpg" alt="desprenoi" width="800" height="400">
+         <img src="img/comparator2.jpg" alt="desprenoi" width="800" height="400">
+
+      </section>
+
+      <section id="admin">
+       <h3>Admin</h3>
+       <ul>
+         <li>
+           Un tip special de utilizator al aplicației este administratorul. 
+           Nu orice user are posibilitatea de a deveni administrator, de fapt nu există posibilitatea 
+           de a face cont de timp admin, acestea fiind salvate și reținute în baza de date. Astfel, numai utilizatorii
+           care au acces la baza de date pot accesa aplicația ca admin. 
+         </li>
+         <li>
+           În plus față de un utilizator obișnuit, un administrator are dreptul de a șterge sau adăuga 
+           informații în baza de date. 
+          </li>
+          <li>
+            Vizual, aplicația diferă prin apariția în header a două Funcționalități noi Admin și Log out.
+          </li>
+          <li>
+            Când dorește administratorul să modifice sau să vizualizeze conținutul bazei de date accesează pagina 
+            intitulată Admin, selectează criteriul pe baza căruia se vor afișa datele și în urma selecției apare un tabel 
+            cu elementele ordonate alfabetic în care se regăsesc datele pe care dorește să le vadă.
+          </li>
+       </ul>
+       <img src="img/admin.jpg" alt="desprenoi" width="800" height="400">
+       <img src="img/admin2.jpg" alt="desprenoi" width="800" height="400">
+
+      </section>
+
+      <section id="login-admin">
+         <h3>Login Admin</h3>
+         <ul>
+           <li>
+             Numai utilizitatorii cu drepturi de administrator pot vedea acestă pagină. Pe baza credențialelor salvate anterior
+             în baza de date, un administrator se poate conecta. În cazul în  care credențialele sunt greșite apare un mesaj
+             de eroare. 
+           </li>
+           <img src="img/admin1.jpg" alt="desprenoi" width="800" height="400">
+           <li>
+             Dacă e-mailul este greșit va apărea "Invalid Email Address!";
+           </li>
+           <img src="img/eroareMail.jpg" alt="desprenoi" width="800" height="400">
+           <li>
+             Dacă parola este prea scurtă va apărea "Your password must be at least 8 characters long!";
+           </li>
+           <img src="img/eroareParola.jpg" alt="desprenoi" width="800" height="400">
+           <li>
+             Dacă e-mailul este sintactic corect și parola are mai mult de 8 caractere, dar nu se regăsește în baza de date va apărea "Invalid Email Address!";
+           </li>
+           <img src="img/eroare3.jpg" alt="desprenoi" width="800" height="400">
+         </ul>
+
+
+      </section>
+
+    </section>
+
+    <section id="schemaMVC">
+     
+      <h2>Schema MVC</h2>
+
+      <figure typeof="schema:SoftwareSourceCode" resource="#role-example" id="mvc_scheme">
+        <pre>
+          <a><i>MVC</i></a>
+          ├─<a><b>App</b></a>
+          │ ├─<a>Controllers</a>
+          │ │ └─<a>judet.php</a>
+          │ ├─<a> Core</a>
+          │ │ ├─<a>App.php</a>
+          │ │ └─<a>Controller.php</a>
+          │ ├─<a>Models</a>
+          │ ├─<a>Views</a>
+          │ │ ├─<a>Components</a>
+          │ │ │ ├─<a>resources</a>
+          │ │ │ ├─<a>footer-styles.css</a>
+          │ │ │ ├─<a>footer.php</a>
+          │ │ │ ├─<a>header-include.php</a>
+          │ │ │ ├─<a>header-styles.css</a>
+          │ │ │ ├─<a>header.js</a>
+          │ │ │ ├─<a>header.php</a>
+          │ │ │ └─<a>index.php</a>
+          │ │ └─<a>grafice.php</a>
+          │ └─<a>init.php</a>
+          └─<a><b>Public</b></a>
+            ├─<a>judet</a>
+            │ ├─<a>Components</a>
+            │ │ ├─<a>resources</a>
+            │ │ ├─<a>footer-styles.css</a>
+            │ │ ├─<a>header-include.php</a>
+            │ │ ├─<a>header-styles.css</a>
+            │ │ └─<a>header.js</a>
+            │ └─<a>Grafice</a>
+            │   ├─<a>grafic-general.css</a>
+            │   └─<a>grafice.js</a>
+            └─<a>Mvc.php</a>
+
+        </pre>
+      </figure>
+
+      <p>Motivație alegere MVC:</p>
+      <ul>
+        <li>
+          Bună organizare logică a proiectului și modularizare.
+        </li>
+        <li>
+          Posibilitatea lucrării indivudual localhost.
+        </li>
+        <li>
+          Posibilitatea separării informațiilor din back-end față de cele front. 
+        </li>
+        <li>
+          Izolarea codului astfel încât acesta să nu poată fi accesat din exterior.
+        </li>
+        <li>
+          Evitarea codului duplicat.
+        </li>
+      </ul>
+      
+     </section>
+
+     <section id="schema-baza-de-date">
+
+      <h2>Schema bazei de date</h2>
+      <figure typeof="schema:SoftwareSourceCode" resource="#role-example" id="sql_scheme">
+        <pre>
+  <a><i>unwe</i></a>
+  ├─<a><b>grupa_varsta</b></a>
+  │ ├─<a>judet (varchar)</a>
+  │ ├─<a>TOTAL (int)</a>
+  │ ├─<a>Sub_25_ani (int)</a>
+  │ ├─<a>25_29_ani (int)</a>
+  │ ├─<a>30_39_ani (int)</a>
+  │ ├─<a>40_49_ani (int)</a>
+  │ ├─<a>50_55_ani (int)</a>
+  │ ├─<a>peste_55_ani (int)</a>
+  │ ├─<a>luna (int)</a>
+  │ └─<a>an (int)</a>
+  ├─<a><b>medie_rezidenta</b></a>
+  │ ├─<a>JUDET (varchar)</a>
+  │ ├─<a>NUMAR_TOTAL_SOMERI (int)</a>
+  │ ├─<a>NUMAR_TOTAL_SOMERI_FEMEI (int)</a>
+  │ ├─<a>NUMAR_TOTAL_SOMERI_BARBATI (int)</a>
+  │ ├─<a>NUMAR_TOTAL_SOMERI_DIN_MEDIUL_URBAN (int)</a>
+  │ ├─<a>NUMAR_SOMERI_FEMEI_DIN_MEDIUL_URBAN (int)</a>
+  │ ├─<a>NUMAR_SOMERI_BARBATI_DIN_MEDIUL_URBAN (int)</a>
+  │ ├─<a>NUMAR_TOTAL_SOMERI_DIN_MEDIUL_RURAL (int)</a>
+  │ ├─<a>NUMAR_SOMERI_FEMEI_DIN_MEDIUL_RURAL (int)</a>
+  │ ├─<a>NUMAR_SOMERI_BARBATI_DIN_MEDIUL_RURAL (int)</a>
+  │ ├─<a>luna (int)</a>
+  │ └─<a>an (int)</a>
+  ├─<a><b>nivelul_educatiei</b></a>
+  │ ├─<a>JUDET (varchar)</a>
+  │ ├─<a>Total_someri_din_care (int)</a>
+  │ ├─<a>fara_studii (int)</a>
+  │ ├─<a>invatamant_primar (int)</a>
+  │ ├─<a>invatamant_gimnazial (int)</a>
+  │ ├─<a>invatamant_liceal (int)</a>
+  │ ├─<a>invatamant_postliceal (int)</a>
+  │ ├─<a>invatamant_profesionalarte_si_meserii (int)</a>
+  │ ├─<a>invatamant_universitar (int)</a>
+  │ ├─<a>luna (int)</a>
+  │ └─<a>an (int)</a>
+  ├─<a><b>rate_somaj</b></a>
+  │ ├─<a>JUDET (varchar)</a>
+  │ ├─<a>Numar_total_someri (varchar)</a>
+  │ ├─<a>Numar_total_someri_femei (varchar)</a>
+  │ ├─<a>Numar_total_someri_barbati (varchar)</a>
+  │ ├─<a>Numar_someri_indemnizati (varchar)</a>
+  │ ├─<a>Numar_someri_neindemnizati (varchar)</a>
+  │ ├─<a>Rata_somajului_ (float)</a>
+  │ ├─<a>Rata_somajului_Feminina_ (float)</a>
+  │ ├─<a>Rata_somajului_Masculina_ (float)</a>
+  │ ├─<a>luna (int)</a>
+  │ └─<a>an (int)</a>
+  ├─<a><b>users</b></a>
+  │ ├─<a>email (varchar)</a>
+  │ └─<a>password (varchar)</a>
+  └─<a><b>users1</b></a>
+    ├─<a>id (int)</a>
+    ├─<a>name (varchar)</a>
+    ├─<a>email (varchar)</a>
+    └─<a>password (varchar)</a>
+
+        </pre>
+      </figure>
+
+     </section>
+
+    <section id="caracteristici-sistem">
+      
+      <h2>Caracteristicile Sistemului</h2>
+         <ul>
+           <li>
+             Pentru a putea fi generate graficele și statisticile, datele de pe site-ul DATA.GOV.RO în formatul CSV trebuie preluate, convertite
+             în format <a href="https://www.convertcsv.com/csv-to-sql.htm">sql</a> 
+             și puse într-o bază de date. Se realizează conexiunea bazei de date la nivel de backend în PHP
+           </li>
+           <li>
+            Se creeaza un API REST propriu cu funcțiile necesare pentru generarea de grafice și statistici.
+           </li>
+           <li>
+             Un utlizator alege județul ale cărui grafice dorește să le vadă, se fac calluri către funcțiile API-ului și se generează graficele.
+
+           </li>
+           <li>
+             O funcționalitate asigură compararea a două județe pe baza unui criteriu ales de utilizator și generarea unui grafic dublu 
+             pentru a se vedea diferențele.
+           </li>
+           <li>
+             Un utilizator are posibilitatea de a descărca graficele și statisticile în formatele CSV, SVG si PDF. 
+           </li>
+           <li>
+             Când un utilizator selectează un criteriu pe baza căruia să se genereze graficele va fi folosit Ajax
+             pentru ca site-ul să funcționeze cât mai rapid , astfel, nu se va reîncărca pagina din nou.
+           </li>
+         </ul>
+
+    </section>
+
+    <section id="tehnologii">
+      
+      <h2>Tehnologii utilizate</h2>
+     <ul>
+       <li>
+        XAMPP for Windows 8.0.3. – pachet de programe free software, open-source și cross-platform web server care conține un 
+        server HTTP (respectiv Apache), o bază de date MySQL și un interpretor pentru scripturile scrise în PHP.
+       </li>
+       <li>
+        AJAX – folosit pentru crearea părții interactive a aplicației prin utilizarea de HTML, CSS, XML. 
+       </li>
+       <li>
+         Biblioteca Chart.js - bibliotecă open-source pentru desenarea de grafice interactive și animate.
+       </li>
+       <li>
+         Biblioteca Leaflet - bibliotecă JavaScript open-source pentru hărți interactive 
+       </li>
+       <li>
+         Datele pot fi descărcate în formatele CSV, SVG si PDF.
+       </li>
+       <li>
+        Protocolul de comunicare pentru serverul de rețea folosit este protocolul HTTP.
+       </li>
+       <li>
+         Pachetul JSON Web Tokens (JWT) - permite autentificarea fără utilizarea sesiunilor de pe server.
+       </li>
+       <li>
+         Biblioteca PHPMailer - biblioteca externă PHP pentru a trimite mail-uri fără localhost.
+       </li>
+       <li>
+         Biblioteca Canvas2svg.js - ajută la realizarea fișierelor de tip SVG.
+       </li>
+       <li>
+         Biblioteca JSPDF - generare PDF.
+       </li>
+       <li>
+          În ceea ce privește arhitectura aplicației, aceasta va fi proiectată pe baza MVC, iar informațiile utilizatorilor 
+        vor fi ferite de atacuri prin folosirea tehnicii de prevenire SQLInjection folosind funcții de bind pentru parametrii în detrimentul concatenărilor.
+       </li>
+       <li>
+         Aplicația este hostată pe Heroku -> vezi <a href="https://unwe.herokuapp.com/">aici</a>
+       </li>
+       
+     </ul>
+    </section>
+    
+    <section id="raport"> 
+      <h2>Raport</h2> 
+      
+      <p>
+        Pagina Admin
+      </p>
+      <ul>
+        <li>
+          Web
+        </li>
+        <img src="img/adminweb.png" alt="desprenoi" width="400" height="300">
+        <li>
+          Mobile
+        </li>
+        <img src="img/adminmobile.png" alt="desprenoi" width="400" height="300">
+      </ul>
+
+      <p>
+        Pagina Comparator
+      </p>
+      
+      <ul>
+        <li>
+          Web
+        </li>
+        <img src="img/compareWeb.png" alt="desprenoi" width="400" height="300">
+        <li>
+          Mobile
+        </li>
+        <img src="img/compareMobile.png" alt="desprenoi" width="400" height="300">
+      </ul>
+
+      <p>
+        Pagina Orașe
+      </p>
+      
+      <ul>
+        <li>
+          Web
+        </li>
+        <img src="img/judetweb.png" alt="desprenoi" width="450" height="300">
+        <li>
+          Mobile
+        </li>
+        <img src="img/judetMobile.png" alt="desprenoi" width="450" height="300">
+      </ul>
+
+      <p>
+        Pagina Contact
+      </p>
+      
+      <ul>
+        <li>
+          Web
+        </li>
+        <img src="img/contactWeb.png" alt="desprenoi" width="450" height="300">
+  
+      </ul>
+      
+    </section>
+  
+    <section id="resurse">
+
+      <h2>Resurse</h2>
+      <ul>
+        
+        <li>
+          <a href="https://data.gov.ro/dataset?q=somaj&sort=metadata_modified+desc">DATA.GOV.RO</a>
+        </li>
+        <li>
+          <a href="https://simplemaps.com/resources/svg-ro">Mapa</a>
+        </li>
+        <li>
+          <a href="https://www.chartjs.org/">Chart.js</a>
+        </li>
+        <li>
+          <a href="https://leafletjs.com/">Leaflet</a>
+        </li>
+        <li>
+          <a href="https://www.apachefriends.org/ro/index.html">Xampp</a>
+        </li>
+        <li>
+         <a href="https://www.w3schools.com/xml/ajax_intro.asp">Ajax</a>
+        </li>
+        <li>
+          <a href="https://w3c.github.io/scholarly-html/">Scholarly HTML</a>
+        </li>
+        <li>
+          <a href="https://github.com/rick4470/IEEE-SRS-Tempate?fbclid=IwAR3DgZOEpScyMDtnVBVfo7v6JuzWbCvIgwSqwSkSDSoeVX7pyryxuYRBigY#revision-history">
+            Software Requirements Specification
+          </a>
+        </li>
+        <li>
+          <a href="https://jwt.io/">JWT</a>
+        </li>
+        <li>
+          <a href="https://phpmailer.codeworxtech.com/">PHP Mailer</a>
+        </li>
+        <li>
+          <a href="https://gliffy.github.io/canvas2svg/">Canvas2SVG.js</a>
+        </li>
+        <li>
+          <a href="https://parall.ax/products/jspdf">JSPDF</a>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org/en-US/">Developer Mozilla</a>
+        </li>
+      </ul>
+    </section>
+
+  </body>
+</html>
